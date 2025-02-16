@@ -42,6 +42,11 @@ android {
     kotlin {
         explicitApi()
     }
+    publishing {
+        multipleVariants {
+            allVariants()
+        }
+    }
 }
 
 dependencies {
@@ -84,13 +89,13 @@ publishing {
     }
 
     publications {
-        release(MavenPublication) {
+        allVariants(MavenPublication) {
             groupId = "android.artisan"
             artifactId = "ui-component"
-            version = "0.0.1"
+            version = "0.0.5"
 
             afterEvaluate {
-                from components.release
+                from components.default
             }
         }
     }
