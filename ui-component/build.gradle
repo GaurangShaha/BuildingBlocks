@@ -82,8 +82,16 @@ publishing {
             name = "GitHubPackages"
             url = "https://maven.pkg.github.com/GaurangShaha/Common"
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                def propertiesFile = new File('local.properties')
+                if (propertiesFile.exists()) {
+                    Properties props = new Properties()
+                    props.load(new FileInputStream(propertiesFile))
+                    username props.getProperty("gpr.user")
+                    password props.getProperty("gpr.key")
+                } else {
+                    username System.getenv("GITHUB_ACTOR")
+                    password System.getenv("GITHUB_TOKEN")
+                }
             }
         }
     }
@@ -92,7 +100,7 @@ publishing {
         allVariants(MavenPublication) {
             groupId = "android.artisan"
             artifactId = "ui-component"
-            version = "0.0.5"
+            version = "1.0.0"
 
             afterEvaluate {
                 from components.default
