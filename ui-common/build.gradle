@@ -47,8 +47,8 @@ android {
 }
 
 dependencies {
-    api project(path: ':foundation')
-    api project(path: ':ui-component')
+    api libs.foundation
+    api libs.ui.component
 }
 
 publishing {

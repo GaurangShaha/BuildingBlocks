@@ -25,6 +25,7 @@ kotestRunnerJunit5Jvm = "5.9.1"
 androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.15.0" }
 architectural-rules = { module = "shaha.gaurang:architectural-rules", version = "1.0.0" }
 foundation = { module = "android.artisan:foundation", version = "0.0.3" }
+ui-component = { module = "android.artisan:ui-component", version = "0.0.1" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
@@ -41,7 +42,6 @@ compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 
 coil = { group = "io.coil-kt", name = "coil-compose", version = "2.7.0" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
-moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshiKotlinCodegen" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlinCodegen" }
 ratingbar = { group = "com.github.a914-gowtham", name = "compose-ratingbar", version = "1.3.4" }
 window-size = { group = "androidx.compose.material3", name = "material3-window-size-class", version = "1.3.1" }

@@ -33,6 +33,21 @@ dependencyResolutionManagement {
                 }
             }
         }
+        maven {
+            url 'https://maven.pkg.github.com/GaurangShaha/Common'
+            credentials {
+                def propertiesFile = new File('local.properties')
+                if (propertiesFile.exists()) {
+                    Properties props = new Properties()
+                    props.load(new FileInputStream(propertiesFile))
+                    username props.getProperty("gpr.user")
+                    password props.getProperty("gpr.key")
+                } else {
+                    username System.getenv("GITHUB_ACTOR")
+                    password System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
     }
 }
 
