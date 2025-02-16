@@ -1,0 +1,45 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://maven.pkg.github.com/GaurangShaha/Architecture_Rules'
+            credentials {
+                def propertiesFile = new File('local.properties')
+                if (propertiesFile.exists()) {
+                    Properties props = new Properties()
+                    props.load(new FileInputStream(propertiesFile))
+
+                    username props.getProperty("gpr.user")
+                    password props.getProperty("gpr.key")
+                } else {
+                    username System.getenv("GITHUB_ACTOR")
+                    password System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+    }
+}
+
+rootProject.name = "Common"
+include ':app'
+include ':networking'
+include ':foundation'
+include ':ui-common'
+include ':test-common'
+include ':ui-component'

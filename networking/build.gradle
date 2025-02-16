@@ -1,0 +1,70 @@
+plugins {
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.ksp
+    id 'maven-publish'
+}
+
+android {
+    namespace 'android.artisan.networking'
+    compileSdk libs.versions.compileSdk.get().toInteger()
+
+    defaultConfig {
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = libs.versions.jvmTarget.get()
+    }
+    kotlin {
+        explicitApi()
+    }
+}
+
+dependencies {
+    api project(path: ':foundation')
+
+    api libs.retrofit
+    api libs.retrofit.converter.moshi
+    api libs.retrofit.logging
+    api libs.moshi.kotlin
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/GaurangShaha/Common"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+
+    publications {
+        release(MavenPublication) {
+            groupId = "android.artisan"
+            artifactId = "networking"
+            version = "0.0.1"
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
