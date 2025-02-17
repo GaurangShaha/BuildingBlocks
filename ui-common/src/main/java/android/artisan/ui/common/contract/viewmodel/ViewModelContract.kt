@@ -9,6 +9,7 @@ public interface ViewModelContract<S, I> {
     public fun processIntent(intent: I)
 
     public companion object {
+      
         public val startWithFiveSecStopTimeout: SharingStarted = SharingStarted.WhileSubscribed(5000)
     }
 }
