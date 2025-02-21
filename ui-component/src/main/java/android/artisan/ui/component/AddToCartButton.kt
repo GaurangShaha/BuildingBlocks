@@ -53,6 +53,33 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+ * A custom button composable that displays different content and animations based on its state.
+ * It is designed to be used as an "Add to Cart" button with visual feedback for different stages like initial state,
+ * loading, and success.
+ *
+ * @param buttonState The current state of the button, which can be Initial, Loading, Success, etc. This determines
+ * the button's behavior and appearance.
+ * @param initialContent The composable content to be displayed when the button is in its initial state.
+ *                       It receives a [RowScope] for flexible layout within the button.
+ * @param resultContent The composable content to be displayed when the button has completed its action successfully.
+ *                       It receives a [RowScope] for flexible layout within the button.
+ * @param onClick The callback to be invoked when the button is clicked and the `buttonState` is in `Initial` state.
+ * @param modifier Modifier to be applied to the button. Defaults to [Modifier].
+ * @param enabled Controls the enabled state of the button. When `false`, this button will not be clickable and will
+ * appear disabled to accessibility services. Defaults to `true`.
+ * @param interactionSource The [MutableInteractionSource] representing the stream of [Interaction]s for this button.
+ * You can create and pass in your own remembered [MutableInteractionSource] if you want to observe or control
+ * the interaction of this button. Defaults to a new [MutableInteractionSource].
+ * @param elevation Defines the button's elevation, typically used to add a shadow effect.
+ * Defaults to [ButtonDefaults.elevation()].
+ * @param shape Defines the button's shape. Defaults to [MaterialTheme.shapes.small].
+ * @param border The border to draw around the button. Pass `null` for no border. Defaults to `null`.
+ * @param colors [ButtonColors] that will be used to resolve the colors used for this button in different states.
+ * Defaults to [ButtonDefaults.buttonColors()].
+ * @param contentPadding The spacing values to apply internally between the container and the button content.
+ * Defaults to [ButtonDefaults.ContentPadding].
+ */
 @Composable
 public fun AddToCartButton(
     buttonState: ButtonState,
@@ -304,9 +331,25 @@ private fun ContentDrawScope.drawItemsAsPerState(
     }
 }
 
+/**
+* The current state of the button, which can be Initial, Loading, Success.
+ * This determines the button's behavior and appearance.
+**/
 public sealed class ButtonState {
+    /**
+     * Represents the initial state of the button.
+     */
     public object Initial : ButtonState()
+
+    /**
+     * Represents the loading state of the button.
+     */
     public object Loading : ButtonState()
+
+    /**
+     * Represents the result state of the button. This state will be used to show success or failure of add
+     * to cart operation.
+     */
     public object Result : ButtonState()
 }
 

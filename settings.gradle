@@ -51,7 +51,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Common"
+rootProject.name = "Building Blocks"
 include ':app'
 include ':networking'
 include ':foundation'

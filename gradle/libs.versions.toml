@@ -1,4 +1,5 @@
 [versions]
+androidDocumentationPlugin = "2.0.0"
 compileSdk = "35"
 kotlinxCoroutinesCore = "1.9.0"
 kotlinxSerializationJson = "1.6.3"
@@ -22,6 +23,7 @@ kotestRunnerJunit5Jvm = "5.9.1"
 
 [libraries]
 
+android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
 androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.15.0" }
 architectural-rules = { module = "shaha.gaurang:architectural-rules", version = "1.0.0" }
 foundation = { module = "android.artisan:foundation", version = "1.0.0" }
@@ -67,3 +69,4 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }

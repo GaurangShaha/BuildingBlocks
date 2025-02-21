@@ -19,6 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
+/**
+ * A composable function that creates a Stepper component.
+ *
+ * The Stepper component allows the user to increase or decrease a quantity.
+ * It displays the current quantity and provides buttons for incrementing and decrementing.
+ *
+ * @param quantity The current quantity value.
+ * @param onIncreaseQuantity A callback function that is invoked when the user clicks the increase button.
+ * @param onDecreaseQuantity A callback function that is invoked when the user clicks the decrease button.
+ * @param modifier Modifier to be applied to the Stepper.
+ */
 @Composable
 public fun Stepper(
     quantity: Int,

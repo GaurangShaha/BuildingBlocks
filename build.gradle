@@ -1,3 +1,5 @@
+import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias libs.plugins.android.application apply false
@@ -6,10 +8,12 @@ plugins {
     alias libs.plugins.kotlin.jvm apply false
     alias libs.plugins.ksp apply false
     alias libs.plugins.detekt apply false
+    alias libs.plugins.dokka apply true
 }
 
 allprojects {
     apply plugin: "io.gitlab.arturbosch.detekt"
+    apply plugin: "org.jetbrains.dokka"
 
     detekt {
         toolVersion = libs.versions.detekt.get()
@@ -23,4 +27,26 @@ allprojects {
         detektPlugins libs.detekt.twitter.compose
         detektPlugins libs.architectural.rules
     }
+
+    afterEvaluate {
+        if (plugins.hasPlugin("com.android.library") || plugins.hasPlugin("com.android.application")) {
+            dependencies {
+                dokkaPlugin libs.android.documentation.plugin
+            }
+        }
+    }
+}
+
+tasks.withType(DokkaMultiModuleTask.class).configureEach {
+    String dokkaBaseConfiguration = """
+    {
+      "customAssets": [ "${file("./config/dokka/logo-icon.svg").path.replace('\\', '/')}"],
+      "footerMessage": "Designed & Developed by [The Android Artisan](www.linkedin.com/in/gaurang-shaha)"
+    }
+    """
+
+    pluginsMapConfiguration.set(
+            // fully qualified plugin name to json configuration
+            ["org.jetbrains.dokka.base.DokkaBase": dokkaBaseConfiguration]
+    )
 }

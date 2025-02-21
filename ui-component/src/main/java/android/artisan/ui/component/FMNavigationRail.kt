@@ -17,6 +17,25 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import java.util.Locale
 
+/**
+ * A composable function that displays a navigation rail for the application.
+ *
+ * This function renders a vertical navigation rail with icons and labels for different
+ * navigation destinations. It handles navigation item selection and updates the UI accordingly.
+ *
+ * @param currentDestinationRoute The route of the currently displayed screen. Used to determine if a
+ *   navigation item should be automatically selected based on the current route. Can be null.
+ * @param navigationBarScreens A list of [NavigationBarScreen] objects representing the available
+ *   navigation destinations. Each screen defines its icon, label, and navigation route.
+ * @param selectedNavigationItemIndex The index of the currently selected navigation item in the
+ *   [navigationBarScreens] list.
+ * @param onNavigationItemSelection A lambda function that is called when a navigation item is
+ *   selected. It receives the index of the selected item.
+ * @param modifier Modifier to be applied to the navigation rail.
+ *
+ * @see NavigationBarScreen
+ *
+ */
 @Composable
 internal fun FMNavigationRail(
     currentDestinationRoute: String?,

@@ -22,6 +22,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * A custom toggle button that represents a heart icon, indicating whether an item is marked as a favorite.
+ *
+ * The button uses an animated transition to visually indicate the change between the "favorite" and "not favorite"
+ * states.
+ *
+ * @param markedAsFavourite Boolean representing the current "favorite" state. `true` if the item is marked as a
+ * favorite, `false` otherwise.
+ * @param modifier Modifier to be applied to the IconToggleButton.
+ * @param onToggleMarkAsFavourite Callback function invoked when the toggle state changes.
+ * It provides a Boolean parameter indicating the new "favorite" state
+ * (`true` if marked as favorite, `false` otherwise).
+ */
 @SuppressLint("UnusedTransitionTargetStateParameter")
 @Composable
 public fun HeartToggleButton(

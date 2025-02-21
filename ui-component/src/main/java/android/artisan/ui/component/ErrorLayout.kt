@@ -16,6 +16,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
+/**
+ * A composable function that displays an error layout with an error message,
+ * an optional error icon, and an optional retry button.
+ *
+ * @param errorMessage The error message to be displayed.
+ * @param errorIcon The painter for the error icon.
+ * @param modifier Modifier for styling the layout.
+ * @param onRetry An optional lambda to be invoked when the retry button is clicked.
+ *                If null, the retry button will not be shown.
+ */
 @Composable
 public fun ErrorLayout(
     errorMessage: String,

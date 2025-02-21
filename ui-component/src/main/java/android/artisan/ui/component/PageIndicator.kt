@@ -15,6 +15,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 
+/**
+ * A composable function that displays a row of page indicator dots.
+ *
+ * This function renders a horizontal row of circular indicators representing the total number of pages.
+ * The indicator corresponding to the [currentPage] is highlighted with the primary color,
+ * while the other indicators are displayed with a deselected color and a border.
+ * If there is only one page then nothing is shown.
+ *
+ * @param totalPages The total number of pages.
+ * @param currentPage The currently selected page (0-based index).
+ * @param modifier Modifier to be applied to the Row containing the page indicators.
+ *
+ * @throws IllegalArgumentException if [totalPages] is less than 1 or [currentPage] is out of range [0, totalPages).
+ */
 @Composable
 public fun PageIndicator(totalPages: Int, currentPage: Int, modifier: Modifier = Modifier) {
     if (totalPages == 1) return

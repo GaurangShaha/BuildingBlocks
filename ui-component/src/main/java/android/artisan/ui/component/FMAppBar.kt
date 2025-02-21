@@ -19,6 +19,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * A custom App Bar for the Flea Market application.
+ *
+ * This composable provides a styled TopAppBar with a navigation icon, title, and optional action items.
+ *
+ * @param title The string resource ID for the title to be displayed in the app bar.
+ * @param navigationIcon A pair consisting of an [ImageVector] for the navigation icon and a lambda function to be
+ * executed when the icon is clicked.
+ * @param modifier The modifier to be applied to the app bar.
+ * @param actionItems A composable lambda that defines the actions to be displayed on the right side of the app bar.
+ *                    These actions are laid out horizontally.
+ * @param backgroundColor The background color of the app bar. Defaults to [MaterialTheme.colors.background].
+ * @param contentColor The preferred color for content inside the app bar.
+ * Defaults to [contentColorFor(backgroundColor)].
+ * @param elevation The elevation of the app bar. Defaults to 0.dp.
+ */
 @Composable
 public fun FleaMarketAppBar(
     @StringRes title: Int,

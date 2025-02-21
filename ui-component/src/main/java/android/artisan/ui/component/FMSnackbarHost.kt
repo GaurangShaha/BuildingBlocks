@@ -25,6 +25,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
+/**
+ * A custom Snackbar host that displays Snackbars with specific styling and icons
+ * based on the [SnackbarType] provided by [SnackbarDelegate.currentSnackbarType].
+ *
+ * This composable provides a consistent look and feel for Snackbars throughout
+ * the Flea Market application. It handles displaying error, success, and default
+ * message types with corresponding icons and colors.
+ *
+ * @param snackbarHostState The [SnackbarHostState] that manages the display of Snackbars.
+ * @param modifier Modifiers to be applied to the Snackbar host.
+ *
+ * @see SnackbarType
+ * @see SnackbarDelegate
+ */
 @Composable
 public fun FleaMarketSnackbarHost(
     snackbarHostState: SnackbarHostState,

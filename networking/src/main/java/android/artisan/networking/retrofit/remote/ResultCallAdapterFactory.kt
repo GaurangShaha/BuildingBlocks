@@ -12,6 +12,34 @@ import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
+/**
+ * A [CallAdapter.Factory] that handles `Call<Result<T>>` and `Call<Result<Response<T>>>` return types,
+ * transforming them into a `Result` object representing the outcome of the network operation.
+ *
+ * This factory allows you to wrap network responses in a `Result` type, which can be either a
+ * `Result.Success` containing the successful data or a `Result.Failure` containing the exception
+ * that occurred. This simplifies error handling and allows for more concise code when dealing
+ * with network requests.
+ *
+ * The `Result` object is then converted into [Result.Success] or [Result.Failure] according to the response from
+ * the server.
+ *
+ * It supports two main return types:
+ *   - `Call<Result<T>>`:  For cases where you want the `Result` to contain the response body `T` directly.
+ *   - `Call<Result<Response<T>>>`: For cases where you need the full `Response` object (including headers,
+ *   status code, etc.) in the `Result`.
+ *
+ * This factory uses a given [CoroutineScope] to handle background tasks related to the execution of the network call.
+ *
+ * Usage:
+ *
+ * ```kotlin
+ *          Retrofit.Builder().baseUrl(BASE_URL)
+ *             .addConverterFactory(MoshiConverterFactory.create())
+ *             .addCallAdapterFactory(ResultCallAdapterFactory.create())
+ *             .client(OkHttpClient.Builder().build()).build()
+ * ```
+ */
 public class ResultCallAdapterFactory private constructor(
     private val coroutineScope: CoroutineScope,
 ) : CallAdapter.Factory() {
@@ -50,6 +78,18 @@ public class ResultCallAdapterFactory private constructor(
     }
 
     public companion object {
+        /**
+         * Creates a [ResultCallAdapterFactory] instance.
+         *
+         * This factory is used to adapt Retrofit's call to return a [Result] type,
+         * encapsulating the success or failure of the network operation. This simplifies
+         * error handling and makes it easier to work with the result of network requests.
+         *
+         * @param coroutineScope The coroutine scope to use for executing the network request.
+         *                       Defaults to a new [CoroutineScope] with the [Dispatchers.IO] dispatcher.
+         *                       You can provide a custom scope for better control over the coroutines' lifecycle.
+         * @return A new [ResultCallAdapterFactory] instance.
+         */
         public fun create(
             coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.IO),
         ): ResultCallAdapterFactory = ResultCallAdapterFactory(coroutineScope = coroutineScope)

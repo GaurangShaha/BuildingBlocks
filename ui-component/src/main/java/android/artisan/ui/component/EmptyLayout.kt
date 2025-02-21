@@ -15,6 +15,20 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
+/**
+ * A composable function that displays an empty layout with a given message and icon.
+ *
+ * This function is typically used to indicate that there is no data to display, such as when a
+ * list is empty or a search returns no results.
+ *
+ * @param message The message to display in the empty layout. This should be a user-friendly
+ * message explaining why the content is empty.
+ * @param icon The icon to display in the empty layout. This should visually represent the empty
+ * state.
+ * @param modifier Modifier to be applied to the layout. This can be used to customize the
+ * appearance and behavior of the layout, such as setting padding or background color. Defaults to
+ * an empty modifier.
+ */
 @Composable
 public fun EmptyLayout(
     message: String,

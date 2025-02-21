@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'android.artisan.common.sample'
+    namespace 'android.artisan.building.blocks.sample'
     compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        applicationId "android.artisan.common"
+        applicationId "android.artisan.building.blocks"
         minSdk libs.versions.minSdk.get().toInteger()
         targetSdk libs.versions.targetSdk.get().toInteger()
         versionCode 1

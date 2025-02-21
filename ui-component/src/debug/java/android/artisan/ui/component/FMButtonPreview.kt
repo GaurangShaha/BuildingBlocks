@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 
 @FleaMarketPreviews
 @Composable
-public fun FMButtonPreview() {
+private fun FMButtonPreview() {
     FleaMarketThemePreview {
         FMButton("Click me..") {}
     }
@@ -14,7 +14,7 @@ public fun FMButtonPreview() {
 
 @FleaMarketPreviews
 @Composable
-public fun FMOutlinedButtonPreview() {
+private fun FMOutlinedButtonPreview() {
     FleaMarketThemePreview {
         FMOutlinedButton("Click me..") {}
     }

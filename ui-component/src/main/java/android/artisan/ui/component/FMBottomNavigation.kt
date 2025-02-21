@@ -28,6 +28,26 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.navOptions
 import java.util.Locale
 
+/**
+ * FMBottomNavigation is a Composable function that renders a custom bottom navigation bar.
+ * It dynamically shows/hides based on the current destination route and handles navigation
+ * between different screens defined in the [navigationBarScreens] list.
+ *
+ * @param currentDestinationRoute The route of the currently displayed screen. Used to determine
+ *                                whether the bottom navigation should be visible and to select
+ *                                the appropriate navigation item.
+ * @param navigationBarScreens A list of [NavigationBarScreen] objects, each representing a
+ *                               screen that can be navigated to via the bottom navigation.
+ * @param selectedNavigationItemIndex The index of the currently selected navigation item.
+ * @param onNavigationItemSelection A callback function that is invoked when a navigation item
+ *                                is selected. It receives the index of the selected item.
+ * @param modifier Modifier for customizing the appearance and layout of the bottom navigation.
+ *
+ * The bottom navigation bar is only visible if the [currentDestinationRoute] matches at least
+ * one of the routes defined in the [navigationBarScreens].
+ *
+ * Each item in the navigation bar displays an icon and a label. The icon is a filled circle if
+ * the item is selected, or the regular icon resource defined in [NavigationBarScreen */
 @Composable
 internal fun FMBottomNavigation(
     currentDestinationRoute: String?,
