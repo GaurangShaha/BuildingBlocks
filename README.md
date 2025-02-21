@@ -57,6 +57,10 @@ You are all set to use these building blocks to create an awesome application.
 
 Comprehensive documentation for all public classes and functions is available [here](https://gaurangshaha.github.io/BuildingBlocks/index.html). This documentation provides detailed insights into the library's components, their usage.
 
+## Samples
+
+You can find the working sample of these libraries [here](https://github.com/GaurangShaha/FleaMarket). FleaMarket is and e-commerce app designed with compose. It uses combination of [FakeStoreApi](https://fakestoreapi.com/) and local database to achieve the functionalities.
+
 ## License
 
 This project is licensed under the Apache-2.0 License. For more details, refer to the [LICENSE](https://github.com/GaurangShaha/BuildingBlocks/blob/main/LICENSE) file in the repository.
