@@ -1,0 +1,371 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MainThreadTestListener</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    Building Blocks
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":test-common:dokkaHtmlPartial/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":test-common:dokkaHtmlPartial/main" data-filter=":test-common:dokkaHtmlPartial/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Building Blocks
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="test-common::android.artisan.test.common.test/MainThreadTestListener///PointingToDeclaration//-1930368172">
+  <div class="breadcrumbs"><a href="../../index.html">test-common</a><span class="delimiter">/</span><a href="../index.html">android.artisan.test.common.test</a><span class="delimiter">/</span><span class="current">MainThreadTestListener</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Main</span><wbr><span>Thread</span><wbr><span>Test</span><wbr><span><span>Listener</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MainThreadTestListener</a> : <span data-unresolved-link="io.kotest.core.listeners/TestListener///PointingToDeclaration/">TestListener</span></div><p class="paragraph"><a href="index.html">MainThreadTestListener</a> is a Kotest <span data-unresolved-link="io.kotest.core.listeners/TestListener///PointingToDeclaration/">TestListener</span> that configures the main dispatcher for tests to use an <span data-unresolved-link="kotlinx.coroutines.test//UnconfinedTestDispatcher/#kotlinx.coroutines.test.TestCoroutineScheduler?#kotlin.String?/PointingToDeclaration/">UnconfinedTestDispatcher</span> during the execution of a <span data-unresolved-link="io.kotest.core.spec/Spec///PointingToDeclaration/">Spec</span>.</p><p class="paragraph">This listener ensures that any code that uses <span data-unresolved-link="kotlinx.coroutines/Dispatchers/Main/#/PointingToDeclaration/">Dispatchers.Main</span> within the test spec will be executed on an <span data-unresolved-link="kotlinx.coroutines.test//UnconfinedTestDispatcher/#kotlinx.coroutines.test.TestCoroutineScheduler?#kotlin.String?/PointingToDeclaration/">UnconfinedTestDispatcher</span>, allowing for immediate execution of coroutines without the need for explicit yielding.</p><p class="paragraph"><strong>Functionality:</strong></p><ul><li><p class="paragraph"><code class="lang-kotlin">beforeSpec(spec: Spec)</code>:     This function is invoked <i>before</i> the execution of any tests within a <span data-unresolved-link="io.kotest.core.spec/Spec///PointingToDeclaration/">Spec</span>. It sets <span data-unresolved-link="kotlinx.coroutines/Dispatchers/Main/#/PointingToDeclaration/">Dispatchers.Main</span> to     an <span data-unresolved-link="kotlinx.coroutines.test//UnconfinedTestDispatcher/#kotlinx.coroutines.test.TestCoroutineScheduler?#kotlin.String?/PointingToDeclaration/">UnconfinedTestDispatcher</span>, initialized with a <span data-unresolved-link="kotlinx.coroutines.test/TestCoroutineScheduler///PointingToDeclaration/">TestCoroutineScheduler</span>. This effectively overrides     the default main dispatcher for the duration of the test spec.</p></li><li><p class="paragraph"><code class="lang-kotlin">afterSpec(spec: Spec)</code>:     This function is invoked <i>after</i> the execution of all tests within a <span data-unresolved-link="io.kotest.core.spec/Spec///PointingToDeclaration/">Spec</span>. It resets <span data-unresolved-link="kotlinx.coroutines/Dispatchers/Main/#/PointingToDeclaration/">Dispatchers.Main</span> to     its original value using <span data-unresolved-link="kotlinx.coroutines/Dispatchers///PointingToDeclaration/">Dispatchers.resetMain()</span>. This is crucial to prevent interference with other tests or     the application's normal operation outside of the test spec.</p></li></ul></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1473751151%2FConstructors%2F-1930368172" anchor-label="MainThreadTestListener" id="-1473751151%2FConstructors%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-main-thread-test-listener.html"><span>Main</span><wbr><span>Thread</span><wbr><span>Test</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1473751151%2FConstructors%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="741645144%2FProperties%2F-1930368172" anchor-label="name" id="741645144%2FProperties%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#741645144%2FProperties%2F-1930368172"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="741645144%2FProperties%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#741645144%2FProperties%2F-1930368172">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1324179425%2FFunctions%2F-1930368172" anchor-label="afterAny" id="1324179425%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1324179425%2FFunctions%2F-1930368172"><span>after</span><wbr><span><span>Any</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1324179425%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#1324179425%2FFunctions%2F-1930368172"><span class="token function">afterAny</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span><span class="token punctuation">, </span></span><span class="parameter ">result<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestResult///PointingToDeclaration/">TestResult</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2024906145%2FFunctions%2F-1930368172" anchor-label="afterContainer" id="2024906145%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#2024906145%2FFunctions%2F-1930368172"><span>after</span><wbr><span><span>Container</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2024906145%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#2024906145%2FFunctions%2F-1930368172"><span class="token function">afterContainer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span><span class="token punctuation">, </span></span><span class="parameter ">result<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestResult///PointingToDeclaration/">TestResult</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="791832357%2FFunctions%2F-1930368172" anchor-label="afterEach" id="791832357%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#791832357%2FFunctions%2F-1930368172"><span>after</span><wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="791832357%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#791832357%2FFunctions%2F-1930368172"><span class="token function">afterEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span><span class="token punctuation">, </span></span><span class="parameter ">result<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestResult///PointingToDeclaration/">TestResult</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2093837235%2FFunctions%2F-1930368172" anchor-label="afterInvocation" id="-2093837235%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2093837235%2FFunctions%2F-1930368172"><span>after</span><wbr><span><span>Invocation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2093837235%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-2093837235%2FFunctions%2F-1930368172"><span class="token function">afterInvocation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span><span class="token punctuation">, </span></span><span class="parameter ">iteration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-479416550%2FFunctions%2F-1930368172" anchor-label="afterSpec" id="-479416550%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="after-spec.html"><span>after</span><wbr><span><span>Spec</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-479416550%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="after-spec.html"><span class="token function">afterSpec</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">spec<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.spec/Spec///PointingToDeclaration/">Spec</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-594496249%2FFunctions%2F-1930368172" anchor-label="afterTest" id="-594496249%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-594496249%2FFunctions%2F-1930368172"><span>after</span><wbr><span><span>Test</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-594496249%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-594496249%2FFunctions%2F-1930368172"><span class="token function">afterTest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span><span class="token punctuation">, </span></span><span class="parameter ">result<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestResult///PointingToDeclaration/">TestResult</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1681905484%2FFunctions%2F-1930368172" anchor-label="beforeAny" id="1681905484%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1681905484%2FFunctions%2F-1930368172"><span>before</span><wbr><span><span>Any</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1681905484%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#1681905484%2FFunctions%2F-1930368172"><span class="token function">beforeAny</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="334955556%2FFunctions%2F-1930368172" anchor-label="beforeContainer" id="334955556%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#334955556%2FFunctions%2F-1930368172"><span>before</span><wbr><span><span>Container</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="334955556%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#334955556%2FFunctions%2F-1930368172"><span class="token function">beforeContainer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1497933742%2FFunctions%2F-1930368172" anchor-label="beforeEach" id="-1497933742%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1497933742%2FFunctions%2F-1930368172"><span>before</span><wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1497933742%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1497933742%2FFunctions%2F-1930368172"><span class="token function">beforeEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1901610261%2FFunctions%2F-1930368172" anchor-label="beforeInvocation" id="-1901610261%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1901610261%2FFunctions%2F-1930368172"><span>before</span><wbr><span><span>Invocation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1901610261%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1901610261%2FFunctions%2F-1930368172"><span class="token function">beforeInvocation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span><span class="token punctuation">, </span></span><span class="parameter ">iteration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2026835471%2FFunctions%2F-1930368172" anchor-label="beforeSpec" id="-2026835471%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="before-spec.html"><span>before</span><wbr><span><span>Spec</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2026835471%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="before-spec.html"><span class="token function">beforeSpec</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">spec<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.spec/Spec///PointingToDeclaration/">Spec</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1467951090%2FFunctions%2F-1930368172" anchor-label="beforeTest" id="1467951090%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1467951090%2FFunctions%2F-1930368172"><span>before</span><wbr><span><span>Test</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1467951090%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#1467951090%2FFunctions%2F-1930368172"><span class="token function">beforeTest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">testCase<span class="token operator">: </span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1029569747%2FFunctions%2F-1930368172" anchor-label="finalizeSpec" id="-1029569747%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1029569747%2FFunctions%2F-1930368172"><span>finalize</span><wbr><span><span>Spec</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1029569747%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1029569747%2FFunctions%2F-1930368172"><span class="token function">finalizeSpec</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">kclass<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="io.kotest.core.spec/Spec///PointingToDeclaration/">Spec</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">results<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span data-unresolved-link="io.kotest.core.test/TestCase///PointingToDeclaration/">TestCase</span><span class="token punctuation">, </span><span data-unresolved-link="io.kotest.core.test/TestResult///PointingToDeclaration/">TestResult</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2068771743%2FFunctions%2F-1930368172" anchor-label="prepareSpec" id="-2068771743%2FFunctions%2F-1930368172" data-filterable-set=":test-common:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":test-common:dokkaHtmlPartial/main" data-filterable-set=":test-common:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2068771743%2FFunctions%2F-1930368172"><span>prepare</span><wbr><span><span>Spec</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2068771743%2FFunctions%2F-1930368172"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":test-common:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-2068771743%2FFunctions%2F-1930368172"><span class="token function">prepareSpec</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">kclass<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="io.kotest.core.spec/Spec///PointingToDeclaration/">Spec</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
