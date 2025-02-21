@@ -18,8 +18,40 @@ The library encompasses the following modules:
 
 ## Getting Started
 
-To integrate the BuildingBlocks Library into your project, follow these steps:
+You can integrate the BuildingBlocks Library into your project in two different ways:
 
+1. Copying the source code directly into your project and adding those module as your gradle dependency.
+
+2. Adding the library as gradle dependency .
+      These libraries are hosted on Github packages and to use them 
+      - Generate a personal access token on Github as mentioned [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic). Make sure that you allows permission for `read:packages`.
+      - Create two properties `gpr.user` and `gpr.key` in you `local.properties`, the value will be Github user name and access token generated above step.
+      - Add maven block in your setting.gradle file. (Please keep the existing configuration in `repositories` block as is and add the new block)
+      ```Groovy
+      dependencyResolutionManagement {
+          repositories {
+              maven {
+                  url 'https://maven.pkg.github.com/GaurangShaha/BuildingBlocks'
+                  credentials {
+                      def propertiesFile = new File('local.properties')
+                      Properties props = new Properties()
+                      props.load(new FileInputStream(propertiesFile))
+      
+                      username props.getProperty("gpr.user")
+                      password props.getProperty("gpr.key")
+                  }
+              }
+          }
+      }
+      ```
+      - In your project add the following gradle dependencies
+          1.  **Foundation**: ```implementation android.artisan:foundation:<latest version>```
+          2.  **Networking**: ```implementation android.artisan:networking:<latest version>```
+          3.  **Test Common**: ```implementation android.artisan:test-common:<latest version>```
+          4.  **UI Common**: ```implementation android.artisan:ui-common:<latest version>```
+          5.  **UI Component**: ```implementation android.artisan:ui-component:<latest version>```
+
+You are all set to use these building blocks to create an awesome application.
 
 ## Documentation
 
