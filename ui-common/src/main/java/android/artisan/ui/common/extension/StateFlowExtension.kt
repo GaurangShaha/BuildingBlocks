@@ -15,22 +15,6 @@ import kotlinx.coroutines.flow.StateFlow
  *
  * @throws ClassCastException if you have a very strange and unlikely edge case where the Stateflow's underlying
  * type changes between reading the value and the execution of the block
- *
- * **Usage:**
- * ```kotlin
- * val myStateFlow: StateFlow<Any> = MutableStateFlow(10)
- *
- * myStateFlow.ifInstanceOf<Int> { intValue ->
- *     println("The value is an integer: $intValue")
- * }
- *
- * myStateFlow.ifInstanceOf<String> { stringValue ->
- *     println("The value is a string: $stringValue")
- * }
- *
- * // Output with initial value of 10:
- * // The value is an integer: 10
- * ```
  */
 public inline fun <reified S> StateFlow<*>.ifInstanceOf(block: (S) -> Unit) {
     val currentState = value
