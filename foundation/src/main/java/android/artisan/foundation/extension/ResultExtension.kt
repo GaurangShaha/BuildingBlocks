@@ -40,16 +40,16 @@ public inline fun <S, V> Result<S>.map(
 /**
  * Transforms a successful [Result] into another [Result].
  *
- * If the [Result] is a [Success], the [function] is applied to the value,
+ * If the [Result] is a [Success], the [transform] is applied to the value,
  * and the resulting [Result] is returned.
  * If the [Result] is a [Failure], it is returned unchanged.
  *
- * @param function The function to apply to the successful value, returning a new [Result].
+ * @param transform The function to apply to the successful value, returning a new [Result].
  * @return The [Result] returned by the function or the original [Failure].
  */
-public inline fun <S, T> Result<S>.flatMap(function: (S) -> Result<T>): Result<T> {
+public inline fun <S, T> Result<S>.flatMap(transform: (S) -> Result<T>): Result<T> {
     return when (this) {
-        is Success -> function(value)
+        is Success -> transform(value)
         is Failure -> this
     }
 }
@@ -57,19 +57,19 @@ public inline fun <S, T> Result<S>.flatMap(function: (S) -> Result<T>): Result<T
 /**
  * Maps the error of a [Result] to a new error.
  *
- * If the [Result] is a [Failure], the [onError] function is applied to the error,
+ * If the [Result] is a [Failure], the [onFailure] function is applied to the error,
  * and a new [Failure] is returned with the transformed error.
  * If the [Result] is a [Success], it is returned unchanged.
  *
- * @param onError The function to apply to the error.
+ * @param onFailure The function to apply to the error.
  * @return A new [Result] with the mapped error or the original [Success].
  */
-public inline fun <S> Result<S>.mapError(
-    onError: (Throwable) -> Throwable
+public inline fun <S> Result<S>.mapFailure(
+    onFailure: (Throwable) -> Throwable
 ): Result<S> {
     return when (this) {
         is Success -> this
-        is Failure -> Failure(onError(error))
+        is Failure -> Failure(onFailure(error))
     }
 }
 
