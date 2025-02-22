@@ -44,6 +44,10 @@ public class ResultCallAdapterFactory private constructor(
     private val coroutineScope: CoroutineScope,
 ) : CallAdapter.Factory() {
 
+    /**
+     * Creates a call adapter for the given [returnType].
+     * Retrofit internally call this function to get appropriate adapter.
+     */
     override fun get(
         returnType: Type,
         annotations: Array<out Annotation>,

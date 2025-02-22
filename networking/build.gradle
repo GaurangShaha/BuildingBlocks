@@ -48,7 +48,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/GaurangShaha/Common"
+            url = "https://maven.pkg.github.com/GaurangShaha/BuildingBlocks"
             credentials {
                 def propertiesFile = new File('local.properties')
                 if (propertiesFile.exists()) {
@@ -68,7 +68,7 @@ publishing {
         release(MavenPublication) {
             groupId = "android.artisan"
             artifactId = "networking"
-            version = "1.0.0"
+            version = "1.0.1"
 
             afterEvaluate {
                 from components.release
