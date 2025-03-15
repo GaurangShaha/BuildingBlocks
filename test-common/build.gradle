@@ -5,8 +5,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility JavaVersion.valueOf(libs.versions.sourceCompatibility.get())
+    targetCompatibility JavaVersion.valueOf(libs.versions.targetCompatibility.get())
 }
 
 kotlin {
@@ -43,7 +43,7 @@ publishing {
             from(components.java)
             groupId = "android.artisan"
             artifactId = "test-common"
-            version = "1.0.1"
+            version = "2.0.0"
         }
     }
 }
