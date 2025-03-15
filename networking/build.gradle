@@ -24,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.valueOf(libs.versions.sourceCompatibility.get())
+        targetCompatibility JavaVersion.valueOf(libs.versions.targetCompatibility.get())
     }
     kotlinOptions {
         jvmTarget = libs.versions.jvmTarget.get()
@@ -68,7 +68,7 @@ publishing {
         release(MavenPublication) {
             groupId = "android.artisan"
             artifactId = "networking"
-            version = "1.0.1"
+            version = "2.0.0"
 
             afterEvaluate {
                 from components.release
