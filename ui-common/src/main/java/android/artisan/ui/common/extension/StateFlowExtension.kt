@@ -13,8 +13,6 @@ import kotlinx.coroutines.flow.StateFlow
  * @param block The lambda function to execute if the current value is an instance of [S].
  *              The lambda receives the current value, cast to type [S], as its parameter.
  *
- * @throws ClassCastException if you have a very strange and unlikely edge case where the Stateflow's underlying
- * type changes between reading the value and the execution of the block
  */
 public inline fun <reified S> StateFlow<*>.ifInstanceOf(block: (S) -> Unit) {
     val currentState = value
