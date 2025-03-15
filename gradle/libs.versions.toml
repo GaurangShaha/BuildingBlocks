@@ -1,7 +1,7 @@
 [versions]
 androidDocumentationPlugin = "2.0.0"
 compileSdk = "35"
-kotlinxCoroutinesCore = "1.10.1"
+kotlinxCoroutinesCore = "1.9.0"
 kotlinxSerializationJson = "1.6.3"
 minSdk = "24"
 mockk = "1.13.17"

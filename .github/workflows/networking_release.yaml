@@ -21,17 +21,17 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew networking:build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Unit Tests
-        run: ./gradlew test
+        run: ./gradlew networking:test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Detekt Checks
-        run: ./gradlew detektMain
+        run: ./gradlew networking:detektMain
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

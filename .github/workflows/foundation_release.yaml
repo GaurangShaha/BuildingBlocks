@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version: '21'
@@ -21,17 +21,17 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew foundation:build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Unit Tests
-        run: ./gradlew test
+        run: ./gradlew foundation:test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Detekt Checks
-        run: ./gradlew detektMain
+        run: ./gradlew foundation:detektMain
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
