@@ -10,8 +10,8 @@ module:networking
 building.blocks.networking.retrofit.remote
 module:storage
 building.blocks.storage
+building.blocks.storage.di
 building.blocks.storage.repository
-building.blocks.storage.source.local.di
 module:test-common
 building.blocks.test.common.test
 module:ui-common
