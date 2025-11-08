@@ -1,4 +1,4 @@
-package android.artisan.foundation.model
+package building.blocks.foundation.model
 
 /**
  * Exception thrown when there is an internet disconnection.
