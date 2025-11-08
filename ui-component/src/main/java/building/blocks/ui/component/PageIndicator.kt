@@ -1,6 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.theme.extraColors
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -14,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.theme.extraColors
 
 /**
  * A composable function that displays a row of page indicator dots.

@@ -1,8 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.compositionlocal.LocalNavController
-import building.blocks.ui.theme.extraColors
-import building.blocks.ui.theme.extraShape
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
@@ -26,6 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.navOptions
+import building.blocks.ui.compositionlocal.LocalNavController
+import building.blocks.ui.theme.extraColors
+import building.blocks.ui.theme.extraShape
 import java.util.Locale
 
 /**

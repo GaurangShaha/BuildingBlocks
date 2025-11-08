@@ -1,6 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.theme.extraShape
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.theme.extraShape
 
 /**
  * A composable function that creates a Stepper component.

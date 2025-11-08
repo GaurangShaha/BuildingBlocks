@@ -1,8 +1,8 @@
 package building.blocks.ui.component.snackbar.model
 
-import building.blocks.ui.component.snackbar.SnackbarDelegate.SnackbarType
 import androidx.annotation.StringRes
 import androidx.compose.material.SnackbarDuration
+import building.blocks.ui.component.snackbar.SnackbarDelegate.SnackbarType
 
 /**
  * Data class representing the details needed to display a snackbar with an action.

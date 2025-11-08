@@ -1,9 +1,9 @@
 package building.blocks.ui.component.snackbar
 
-import building.blocks.ui.component.snackbar.SnackbarDelegate.SnackbarType.DEFAULT
 import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.SnackbarResult
+import building.blocks.ui.component.snackbar.SnackbarDelegate.SnackbarType.DEFAULT
 
 /**
  * `SnackbarDelegate` is a singleton object responsible for managing and displaying

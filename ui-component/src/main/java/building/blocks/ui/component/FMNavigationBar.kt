@@ -1,7 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.compositionlocal.LocalNavController
-import building.blocks.ui.compositionlocal.LocalWindowSizeClass
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -12,6 +10,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
+import building.blocks.ui.compositionlocal.LocalNavController
+import building.blocks.ui.compositionlocal.LocalWindowSizeClass
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.serializer

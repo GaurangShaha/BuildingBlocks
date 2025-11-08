@@ -1,8 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.component.snackbar.SnackbarDelegate
-import building.blocks.ui.component.snackbar.SnackbarDelegate.SnackbarType
-import building.blocks.ui.theme.extraColors
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -24,6 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.component.snackbar.SnackbarDelegate
+import building.blocks.ui.component.snackbar.SnackbarDelegate.SnackbarType
+import building.blocks.ui.theme.extraColors
 
 /**
  * A custom Snackbar host that displays Snackbars with specific styling and icons

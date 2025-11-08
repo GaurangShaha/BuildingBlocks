@@ -1,8 +1,8 @@
 package building.blocks.ui.compositionlocal
 
-import building.blocks.ui.component.shared.SharedUIController
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
+import building.blocks.ui.component.shared.SharedUIController
 
 /**
  * CompositionLocal that provides a [SharedUIController] instance.

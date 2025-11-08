@@ -1,6 +1,5 @@
 package building.blocks.ui.theme
 
-import building.blocks.ui.helper.findActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
@@ -14,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import building.blocks.ui.helper.findActivity
 
 /**
  *  The light color palette for the application.

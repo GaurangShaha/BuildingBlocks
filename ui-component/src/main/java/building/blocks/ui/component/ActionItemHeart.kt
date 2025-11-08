@@ -1,7 +1,6 @@
 package building.blocks.ui.component
 
 import android.annotation.SuppressLint
-import building.blocks.ui.theme.extraColors
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
@@ -21,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.theme.extraColors
 
 /**
  * A custom toggle button that represents a heart icon, indicating whether an item is marked as a favorite.

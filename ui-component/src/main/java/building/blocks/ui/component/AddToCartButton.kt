@@ -1,8 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.component.ButtonState.Initial
-import building.blocks.ui.component.ButtonState.Loading
-import building.blocks.ui.component.ButtonState.Result
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.FastOutLinearInEasing
@@ -50,6 +47,9 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.component.ButtonState.Initial
+import building.blocks.ui.component.ButtonState.Loading
+import building.blocks.ui.component.ButtonState.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

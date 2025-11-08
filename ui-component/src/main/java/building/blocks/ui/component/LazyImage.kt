@@ -1,13 +1,13 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.modifier.shimmer
-import building.blocks.ui.theme.extraColors
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import building.blocks.ui.modifier.shimmer
+import building.blocks.ui.theme.extraColors
 import coil.compose.SubcomposeAsyncImage
 
 /**

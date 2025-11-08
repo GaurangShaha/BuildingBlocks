@@ -1,7 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.theme.extraColors
-import building.blocks.ui.theme.extraShape
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
@@ -11,6 +9,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.theme.extraColors
+import building.blocks.ui.theme.extraShape
 
 /**
  * FMButton is a custom button composable that provides a styled button with a capsule shape.

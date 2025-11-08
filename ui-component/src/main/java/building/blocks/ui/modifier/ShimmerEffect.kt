@@ -1,6 +1,5 @@
 package building.blocks.ui.modifier
 
-import building.blocks.ui.theme.extraColors
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
@@ -17,6 +16,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
+import building.blocks.ui.theme.extraColors
 
 private const val SHIMMER_ANIMATION_TIME = 1000
 
