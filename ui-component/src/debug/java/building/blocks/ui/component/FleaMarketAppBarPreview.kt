@@ -1,8 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.preview.FleaMarketPreviews
-import building.blocks.ui.preview.FleaMarketThemePreview
-import building.blocks.ui.theme.extraColors
 import androidx.compose.foundation.background
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -15,6 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import building.blocks.ui.preview.FleaMarketPreviews
+import building.blocks.ui.preview.FleaMarketThemePreview
+import building.blocks.ui.theme.extraColors
 
 @FleaMarketPreviews
 @Composable

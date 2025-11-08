@@ -1,11 +1,5 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.component.ButtonState.Initial
-import building.blocks.ui.component.ButtonState.Loading
-import building.blocks.ui.component.ButtonState.Result
-import building.blocks.ui.preview.FleaMarketPreviews
-import building.blocks.ui.preview.FleaMarketThemePreview
-import building.blocks.ui.theme.extraColors
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -24,6 +18,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.component.ButtonState.Initial
+import building.blocks.ui.component.ButtonState.Loading
+import building.blocks.ui.component.ButtonState.Result
+import building.blocks.ui.preview.FleaMarketPreviews
+import building.blocks.ui.preview.FleaMarketThemePreview
+import building.blocks.ui.theme.extraColors
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

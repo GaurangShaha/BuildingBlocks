@@ -1,11 +1,11 @@
 package building.blocks.ui.component
 
-import building.blocks.ui.preview.FleaMarketPreviews
-import building.blocks.ui.preview.FleaMarketThemePreview
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import building.blocks.ui.preview.FleaMarketPreviews
+import building.blocks.ui.preview.FleaMarketThemePreview
 
 @FleaMarketPreviews
 @Composable

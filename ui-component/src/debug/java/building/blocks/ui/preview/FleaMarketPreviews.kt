@@ -1,11 +1,5 @@
 package building.blocks.ui.preview
 
-import building.blocks.ui.component.shared.SharedUIController
-import building.blocks.ui.component.snackbar.model.SnackbarDetails
-import building.blocks.ui.compositionlocal.LocalNavController
-import building.blocks.ui.compositionlocal.LocalSharedUIController
-import building.blocks.ui.compositionlocal.LocalWindowSizeClass
-import building.blocks.ui.theme.FleaMarketTheme
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.material.Surface
@@ -16,6 +10,12 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.navigation.compose.rememberNavController
+import building.blocks.ui.component.shared.SharedUIController
+import building.blocks.ui.component.snackbar.model.SnackbarDetails
+import building.blocks.ui.compositionlocal.LocalNavController
+import building.blocks.ui.compositionlocal.LocalSharedUIController
+import building.blocks.ui.compositionlocal.LocalWindowSizeClass
+import building.blocks.ui.theme.FleaMarketTheme
 
 /**
  * [FleaMarketPreviews] is a custom annotation that provides a set of predefined
