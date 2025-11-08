@@ -41,9 +41,9 @@ publishing {
     publications {
         gpr(MavenPublication) {
             from(components.java)
-            groupId = "android.artisan"
+            groupId = "building.blocks"
             artifactId = "test-common"
-            version = "2.0.0"
+            version = "1.0.0"
         }
     }
 }

@@ -1,4 +1,4 @@
-package android.artisan.test.common.test
+package building.blocks.test.common.test
 
 import io.kotest.core.listeners.TestListener
 import io.kotest.core.spec.Spec
