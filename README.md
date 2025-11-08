@@ -6,17 +6,19 @@ The BuildingBlocks Library is a collection of foundational modules designed to s
 
 The library encompasses the following modules:
 
-1. **Foundation**: Provides essential base classes and utilities that serve as the building blocks for other modules. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/foundation/index.html).
+1. [**Foundation**](./foundation): Provides essential base classes and utilities that serve as the building blocks for other modules. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/foundation/index.html).
 
-2. **Networking**: Facilitates network operations, offering tools for API interactions, data fetching, and network-related utilities. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/networking/index.html).
+2. [**Networking**](./networking): Facilitates network operations, offering tools for API interactions, data fetching, and network-related utilities. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/networking/index.html).
 
-3. **Test Common**: Contains testing utilities and base classes to support unit and integration testing, ensuring code reliability and robustness. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/test-common/index.html).
+3. [**Test Common**](./test-common): Contains testing utilities and base classes to support unit and integration testing, ensuring code reliability and robustness. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/test-common/index.html).
 
-4. **UI Common**: Offers building blocks and helper methods for UI layer. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-common/index.html).
+4. [**UI Common**](./ui-common): Offers building blocks and helper methods for UI layer. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-common/index.html).
 
-5. **UI Component**: Includes a set of customizable UI elements and widgets that can be readily integrated into applications to enhance user experience. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-component/index.html).
+5. [**UI Component**](./ui-component): Includes a set of customizable UI elements and widgets that can be readily integrated into applications to enhance user experience. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-component/index.html).
 
-6. **Crypto**: Provides a robust framework for handling cryptographic operations within the application, offering support for both in-memory text and stream-based data encryption and decryption. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/crypto/index.html).
+6. [**Crypto**](./crypto): Provides a robust framework for handling cryptographic operations within the application, offering support for both in-memory text and stream-based data encryption and decryption. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/crypto/index.html).
+
+7. [**Storage**](./storage): Simplifies file and data storage operations by providing a unified API for accessing various storage locations, including app-specific and public directories. It abstracts away the complexities of file management on Android, including differences between API levels. It also provides the functionality to encrypt or decrypt files. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/storage/index.html).
 
 ## Getting Started
 
@@ -53,6 +55,7 @@ You can integrate the BuildingBlocks Library into your project in two different 
           4.  **UI Common**: ```implementation building.blocks:ui-common:<latest version>```
           5.  **UI Component**: ```implementation building.blocks:ui-component:<latest version>```
           6.  **Crypto**: ```implementation building.blocks:crypto:<latest version>```
+          7.  **Storage**: ```implementation building.blocks:storage:<latest version>```
 
 You are all set to use these building blocks to create an awesome application.
 

@@ -1,0 +1,77 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    id 'maven-publish'
+}
+
+android {
+    namespace 'building.blocks.storage'
+    compileSdk libs.versions.compileSdk.get().toInteger()
+
+    defaultConfig {
+
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.valueOf(libs.versions.sourceCompatibility.get())
+        targetCompatibility JavaVersion.valueOf(libs.versions.targetCompatibility.get())
+    }
+    kotlinOptions {
+        jvmTarget = libs.versions.jvmTarget.get()
+    }
+    kotlin {
+        explicitApi()
+    }
+}
+
+dependencies {
+    api libs.foundation
+
+    implementation libs.crypto
+
+    implementation libs.androidx.core
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/GaurangShaha/BuildingBlocks"
+            credentials {
+                def propertiesFile = new File('local.properties')
+                if (propertiesFile.exists()) {
+                    Properties props = new Properties()
+                    props.load(new FileInputStream(propertiesFile))
+                    username props.getProperty("gpr.user")
+                    password props.getProperty("gpr.key")
+                } else {
+                    username System.getenv("GITHUB_ACTOR")
+                    password System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+    }
+
+    publications {
+        release(MavenPublication) {
+            groupId = "building.blocks"
+            artifactId = "storage"
+            version = "1.0.0"
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}

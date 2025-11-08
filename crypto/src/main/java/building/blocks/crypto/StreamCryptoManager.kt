@@ -25,7 +25,7 @@ import javax.crypto.spec.GCMParameterSpec
  * @property encryptionScope The [CoroutineScope] on which the encryption process is performed.
  * Defaults to [Dispatchers.Default] to avoid blocking the main thread.
  */
-internal class StreamCryptoManager(
+public class StreamCryptoManager(
     private val encryptionScope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ) {
     /**
@@ -37,7 +37,7 @@ internal class StreamCryptoManager(
      * @param data The plaintext [InputStream] to be encrypted.
      * @return A [PipedInputStream] from which the encrypted data (IV + ciphertext) can be read.
      */
-    fun encrypt(data: InputStream): InputStream {
+    public fun encrypt(data: InputStream): InputStream {
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(Cipher.ENCRYPT_MODE, KeyProvider.getOrCreateSecretKey(FILE))
 
@@ -68,7 +68,7 @@ internal class StreamCryptoManager(
      * @return A [CipherInputStream] that provides the decrypted plaintext data.
      * @throws java.lang.IllegalStateException if the stream is too short to contain a valid IV.
      */
-    fun decrypt(encryptedData: InputStream): InputStream {
+    public fun decrypt(encryptedData: InputStream): InputStream {
         val iv = ByteArray(GCM_IV_LENGTH)
         val bytesRead = encryptedData.read(iv)
         if (bytesRead < GCM_IV_LENGTH) {

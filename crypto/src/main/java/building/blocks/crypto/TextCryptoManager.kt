@@ -15,7 +15,7 @@ import javax.crypto.spec.GCMParameterSpec
  * that needs to be stored securely but does not warrant a file-based stream approach. All data
  * is processed in memory.
  */
-internal class TextCryptoManager {
+public class TextCryptoManager {
     /**
      * Encrypts a plaintext string and returns it as a Base64-encoded ciphertext.
      *
@@ -26,7 +26,7 @@ internal class TextCryptoManager {
      * @param plainText The plaintext string to encrypt.
      * @return A Base64-encoded string representing the IV and encrypted data.
      */
-    fun encrypt(plainText: String): String {
+    public fun encrypt(plainText: String): String {
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(Cipher.ENCRYPT_MODE, KeyProvider.getOrCreateSecretKey(KeyPurpose.TEXT))
 
@@ -48,7 +48,7 @@ internal class TextCryptoManager {
      * @param encryptedString The Base64-encoded string containing the IV and ciphertext.
      * @return The original decrypted plaintext string.
      */
-    fun decrypt(encryptedString: String): String {
+    public fun decrypt(encryptedString: String): String {
         val encryptedData = Base64.decode(encryptedString, Base64.DEFAULT)
 
         val iv = encryptedData.copyOfRange(0, GCM_IV_LENGTH)

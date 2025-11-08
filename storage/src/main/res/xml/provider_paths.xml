@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- For app-specific internal storage -->
+    <files-path
+        name="internal_files"
+        path="." />
+
+    <!-- For app-specific cache -->
+    <cache-path
+        name="internal_cache"
+        path="." />
+
+    <!-- For app-specific external storage -->
+    <external-files-path
+        name="external_app_files"
+        path="." />
+
+    <!-- For public storage (pre-Q) -->
+    <external-path
+        name="public_storage"
+        path="." />
+</paths>
