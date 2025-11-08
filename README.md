@@ -12,7 +12,7 @@ The library encompasses the following modules:
 
 3. **Test Common**: Contains testing utilities and base classes to support unit and integration testing, ensuring code reliability and robustness. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/test-common/index.html).
 
-4. **UI Common**: Offers building blocks user interface components and helpers to maintain a consistent look and feel across applications. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-common/index.html).
+4. **UI Common**: Offers building blocks and helper methods for UI layer. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-common/index.html).
 
 5. **UI Component**: Includes a set of customizable UI elements and widgets that can be readily integrated into applications to enhance user experience. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-component/index.html).
 
@@ -45,11 +45,11 @@ You can integrate the BuildingBlocks Library into your project in two different 
       }
       ```
       - In your project add the following gradle dependencies
-          1.  **Foundation**: ```implementation android.artisan:foundation:<latest version>```
-          2.  **Networking**: ```implementation android.artisan:networking:<latest version>```
-          3.  **Test Common**: ```implementation android.artisan:test-common:<latest version>```
-          4.  **UI Common**: ```implementation android.artisan:ui-common:<latest version>```
-          5.  **UI Component**: ```implementation android.artisan:ui-component:<latest version>```
+          1.  **Foundation**: ```implementation building.blocks:foundation:<latest version>```
+          2.  **Networking**: ```implementation building.blocks:networking:<latest version>```
+          3.  **Test Common**: ```implementation building.blocks:test-common:<latest version>```
+          4.  **UI Common**: ```implementation building.blocks:ui-common:<latest version>```
+          5.  **UI Component**: ```implementation building.blocks:ui-component:<latest version>```
 
 You are all set to use these building blocks to create an awesome application.
 

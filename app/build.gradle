@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'android.artisan.building.blocks.sample'
+    namespace 'building.blocks.sample'
     compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        applicationId "android.artisan.building.blocks"
+        applicationId "building.blocks.sample"
         minSdk libs.versions.minSdk.get().toInteger()
         targetSdk libs.versions.targetSdk.get().toInteger()
         versionCode 1
@@ -56,5 +56,6 @@ android {
 
 dependencies {
     implementation project(path: ':ui-common')
+    implementation project(path: ':ui-component')
     implementation project(':networking')
 }
