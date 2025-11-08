@@ -1,7 +1,6 @@
-package android.artisan.networking.retrofit.remote.adapter
+package building.blocks.networking.retrofit.remote.adapter
 
-import android.artisan.foundation.model.Result
-import android.artisan.networking.retrofit.remote.call.ResultWithBodyCall
+import building.blocks.networking.retrofit.remote.call.ResultWithBodyCall
 import kotlinx.coroutines.CoroutineScope
 import retrofit2.Call
 import retrofit2.CallAdapter

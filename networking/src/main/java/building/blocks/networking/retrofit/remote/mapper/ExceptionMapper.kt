@@ -1,6 +1,6 @@
-package android.artisan.networking.retrofit.remote.mapper
+package building.blocks.networking.retrofit.remote.mapper
 
-import android.artisan.foundation.model.InternetDisconnectionException
+import building.blocks.foundation.model.InternetDisconnectionException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 

@@ -7,6 +7,3 @@
 -keepclassmembers class * {
     @retrofit2.http.* <methods>;
 }
-
--keep class android.artisan.foundation.model.Result { *; }
--keep class android.artisan.foundation.model.Result$* { *; }

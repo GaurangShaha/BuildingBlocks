@@ -29,8 +29,8 @@ android-documentation-plugin = { module = "org.jetbrains.dokka:android-documenta
 androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.15.0" }
 
 architectural-rules = { module = "shaha.gaurang:architectural-rules", version = "1.0.0" }
-foundation = { module = "android.artisan:foundation", version = "2.0.0" }
-ui-component = { module = "android.artisan:ui-component", version = "2.0.0" }
+foundation = { module = "building.blocks:foundation", version = "1.0.0" }
+ui-component = { module = "building.blocks:ui-component", version = "1.0.0" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore"}
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }

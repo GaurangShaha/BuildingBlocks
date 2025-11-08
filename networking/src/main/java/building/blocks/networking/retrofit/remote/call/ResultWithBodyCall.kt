@@ -1,9 +1,7 @@
-package android.artisan.networking.retrofit.remote.call
+package building.blocks.networking.retrofit.remote.call
 
-import android.artisan.foundation.helper.executeSafely
-import android.artisan.foundation.model.Result
-import android.artisan.foundation.model.Result.Failure
-import android.artisan.networking.retrofit.remote.mapper.toInternetConnectionExceptionOrSelf
+import building.blocks.foundation.helper.executeSafely
+import building.blocks.networking.retrofit.remote.mapper.toInternetConnectionExceptionOrSelf
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
@@ -54,7 +52,7 @@ internal class ResultWithBodyCall<T : Any>(
                 coroutineContext.ensureActive()
                 callback.onResponse(
                     this@ResultWithBodyCall,
-                    Response.success(Failure(e.toInternetConnectionExceptionOrSelf()))
+                    Response.success(Result.failure(e.toInternetConnectionExceptionOrSelf()))
                 )
             }
         }
@@ -66,7 +64,7 @@ internal class ResultWithBodyCall<T : Any>(
                 Response.success(proxy.execute().toResult(resultRawType))
             } catch (e: Exception) {
                 coroutineContext.ensureActive()
-                Response.success(Failure(e.toInternetConnectionExceptionOrSelf()))
+                Response.success(Result.failure(e.toInternetConnectionExceptionOrSelf()))
             }
         }
 
