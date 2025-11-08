@@ -16,6 +16,8 @@ The library encompasses the following modules:
 
 5. **UI Component**: Includes a set of customizable UI elements and widgets that can be readily integrated into applications to enhance user experience. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/ui-component/index.html).
 
+6. **Crypto**: Provides a robust framework for handling cryptographic operations within the application, offering support for both in-memory text and stream-based data encryption and decryption. You can find the detailed documentation of it [here](https://gaurangshaha.github.io/BuildingBlocks/crypto/index.html).
+
 ## Getting Started
 
 You can integrate the BuildingBlocks Library into your project in two different ways:
@@ -50,6 +52,7 @@ You can integrate the BuildingBlocks Library into your project in two different 
           3.  **Test Common**: ```implementation building.blocks:test-common:<latest version>```
           4.  **UI Common**: ```implementation building.blocks:ui-common:<latest version>```
           5.  **UI Component**: ```implementation building.blocks:ui-component:<latest version>```
+          6.  **Crypto**: ```implementation building.blocks:crypto:<latest version>```
 
 You are all set to use these building blocks to create an awesome application.
 
