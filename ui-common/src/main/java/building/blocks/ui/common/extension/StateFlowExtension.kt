@@ -1,4 +1,4 @@
-package android.artisan.ui.common.extension
+package building.blocks.ui.common.extension
 
 import kotlinx.coroutines.flow.StateFlow
 

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'android.artisan.ui.common'
+    namespace 'building.blocks.ui.common'
     compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
@@ -30,12 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = libs.versions.jvmTarget.get()
     }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion libs.versions.kotlinCompilerExtensionVersion.get()
-    }
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -53,7 +47,6 @@ android {
 
 dependencies {
     api libs.foundation
-    api libs.ui.component
 }
 
 publishing {
@@ -78,9 +71,9 @@ publishing {
 
     publications {
         allVariants(MavenPublication) {
-            groupId = "android.artisan"
+            groupId = "building.blocks"
             artifactId = "ui-common"
-            version = "2.0.0"
+            version = "1.0.0"
 
             afterEvaluate {
                 from components.default

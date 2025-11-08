@@ -1,4 +1,4 @@
-package android.artisan.ui.common.contract.viewmodel
+package building.blocks.ui.common.contract.viewmodel
 
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
