@@ -1,0 +1,401 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>StorageLocation</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    BuildingBlocks
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":storage:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":storage:dokkaHtmlPartial/release" data-filter=":storage:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    BuildingBlocks
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="storage::building.blocks.storage/StorageLocation///PointingToDeclaration//1567777034">
+  <div class="breadcrumbs"><a href="../../index.html">storage</a><span class="delimiter">/</span><a href="../index.html">building.blocks.storage</a><span class="delimiter">/</span><span class="current">StorageLocation</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Storage</span><wbr><span><span>Location</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="index.html">StorageLocation</a></div><p class="paragraph">Represents different storage locations available on an Android device for file operations. This sealed class allows for locations to be simple singletons (like <a href="-internal-app-cache/index.html">InternalAppCache</a>) or to carry data, such as a custom subdirectory path.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-internal-app-storage/index.html">InternalAppStorage</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-internal-app-cache/index.html">InternalAppCache</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-external-app-storage/index.html">ExternalAppStorage</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-downloads/index.html">PublicDownloads</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-documents/index.html">PublicDocuments</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-pictures/index.html">PublicPictures</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-dcim/index.html">PublicDcim</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-movies/index.html">PublicMovies</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-music/index.html">PublicMusic</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-audiobooks/index.html">PublicAudiobooks</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-notifications/index.html">PublicNotifications</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-ringtones/index.html">PublicRingtones</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-alarms/index.html">PublicAlarms</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-podcasts/index.html">PublicPodcasts</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-recordings/index.html">PublicRecordings</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-public-screenshots/index.html">PublicScreenshots</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1552706004%2FClasslikes%2F1567777034" anchor-label="ExternalAppStorage" id="-1552706004%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-external-app-storage/index.html"><span>External</span><wbr><span>App</span><wbr><span><span>Storage</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1552706004%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-external-app-storage/index.html">ExternalAppStorage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">External storage for app-specific files. Files are removed when the app is uninstalled. Corresponds to <code class="lang-kotlin">Context.getExternalFilesDir()</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1960321069%2FClasslikes%2F1567777034" anchor-label="InternalAppCache" id="-1960321069%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-internal-app-cache/index.html"><span>Internal</span><wbr><span>App</span><wbr><span><span>Cache</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1960321069%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-internal-app-cache/index.html">InternalAppCache</a> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Represents the application-specific cache directory on internal storage. This location is for temporary files and the system may delete them. It is a singleton and does not support custom subdirectories via this class. Corresponds to <code class="lang-kotlin">Context.getCacheDir()</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-293257734%2FClasslikes%2F1567777034" anchor-label="InternalAppStorage" id="-293257734%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-internal-app-storage/index.html"><span>Internal</span><wbr><span>App</span><wbr><span><span>Storage</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-293257734%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-internal-app-storage/index.html">InternalAppStorage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Represents the internal app-specific storage directory. Files are private to the app and stored in a location corresponding to <code class="lang-kotlin">Context.getFilesDir()</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1424852006%2FClasslikes%2F1567777034" anchor-label="PublicAlarms" id="1424852006%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-alarms/index.html"><span>Public</span><wbr><span><span>Alarms</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1424852006%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-alarms/index.html">PublicAlarms</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing custom alarm sounds. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_ALARMS</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1256119148%2FClasslikes%2F1567777034" anchor-label="PublicAudiobooks" id="-1256119148%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-audiobooks/index.html"><span>Public</span><wbr><span><span>Audiobooks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1256119148%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/RequiresApi.html"><span class="token annotation builtin">RequiresApi</span></a><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">29</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-audiobooks/index.html">PublicAudiobooks</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing audiobooks. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_AUDIOBOOKS</code>. Available on Android Q (API 29) and above.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2029442917%2FClasslikes%2F1567777034" anchor-label="PublicDcim" id="2029442917%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-dcim/index.html"><span>Public</span><wbr><span><span>Dcim</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2029442917%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-dcim/index.html">PublicDcim</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">The traditional location for pictures and videos when mounting the device as a camera. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_DCIM</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="633035554%2FClasslikes%2F1567777034" anchor-label="PublicDocuments" id="633035554%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-documents/index.html"><span>Public</span><wbr><span><span>Documents</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="633035554%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-documents/index.html">PublicDocuments</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing documents that have been created by the user. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_DOCUMENTS</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="65451087%2FClasslikes%2F1567777034" anchor-label="PublicDownloads" id="65451087%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-downloads/index.html"><span>Public</span><wbr><span><span>Downloads</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="65451087%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-downloads/index.html">PublicDownloads</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing files that have been downloaded by the user. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_DOWNLOADS</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1938350149%2FClasslikes%2F1567777034" anchor-label="PublicMovies" id="1938350149%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-movies/index.html"><span>Public</span><wbr><span><span>Movies</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1938350149%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-movies/index.html">PublicMovies</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing movies that are available to the user. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_MOVIES</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-200326955%2FClasslikes%2F1567777034" anchor-label="PublicMusic" id="-200326955%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-music/index.html"><span>Public</span><wbr><span><span>Music</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-200326955%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-music/index.html">PublicMusic</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing music that should be in the user's music list. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_MUSIC</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2066648462%2FClasslikes%2F1567777034" anchor-label="PublicNotifications" id="-2066648462%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-notifications/index.html"><span>Public</span><wbr><span><span>Notifications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2066648462%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-notifications/index.html">PublicNotifications</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing custom notification sounds. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_NOTIFICATIONS</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1583486675%2FClasslikes%2F1567777034" anchor-label="PublicPictures" id="1583486675%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-pictures/index.html"><span>Public</span><wbr><span><span>Pictures</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1583486675%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-pictures/index.html">PublicPictures</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing pictures that are available to the user. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_PICTURES</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1421336231%2FClasslikes%2F1567777034" anchor-label="PublicPodcasts" id="-1421336231%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-podcasts/index.html"><span>Public</span><wbr><span><span>Podcasts</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1421336231%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-podcasts/index.html">PublicPodcasts</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing podcasts. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_PODCASTS</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-588092346%2FClasslikes%2F1567777034" anchor-label="PublicRecordings" id="-588092346%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-recordings/index.html"><span>Public</span><wbr><span><span>Recordings</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-588092346%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/RequiresApi.html"><span class="token annotation builtin">RequiresApi</span></a><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">31</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-recordings/index.html">PublicRecordings</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing recorded audio files. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_RECORDINGS</code>. Available on Android S (API 31) and above.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2049369367%2FClasslikes%2F1567777034" anchor-label="PublicRingtones" id="-2049369367%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-ringtones/index.html"><span>Public</span><wbr><span><span>Ringtones</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2049369367%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-ringtones/index.html">PublicRingtones</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing custom ringtones. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_RINGTONES</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1025543827%2FClasslikes%2F1567777034" anchor-label="PublicScreenshots" id="-1025543827%2FClasslikes%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-screenshots/index.html"><span>Public</span><wbr><span><span>Screenshots</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1025543827%2FClasslikes%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/RequiresApi.html"><span class="token annotation builtin">RequiresApi</span></a><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">29</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-public-screenshots/index.html">PublicScreenshots</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subDirectory<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span> : <a href="index.html">StorageLocation</a></div><div class="brief "><p class="paragraph">Standard directory for placing screenshots. Corresponds to <code class="lang-kotlin">Environment.DIRECTORY_SCREENSHOTS</code>. Available on Android Q (API 29) and above.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1456388271%2FProperties%2F1567777034" anchor-label="subDirectory" id="1456388271%2FProperties%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sub-directory.html"><span>sub</span><wbr><span><span>Directory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1456388271%2FProperties%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="sub-directory.html">subDirectory</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-207127863%2FFunctions%2F1567777034" anchor-label="isPublic" id="-207127863%2FFunctions%2F1567777034" data-filterable-set=":storage:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":storage:dokkaHtmlPartial/release" data-filterable-set=":storage:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-public.html"><span>is</span><wbr><span><span>Public</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-207127863%2FFunctions%2F1567777034"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":storage:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-public.html"><span class="token function">isPublic</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the storage location is a public, shared directory.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

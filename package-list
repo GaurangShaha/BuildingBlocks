@@ -8,6 +8,10 @@ building.blocks.foundation.helper
 building.blocks.foundation.model
 module:networking
 building.blocks.networking.retrofit.remote
+module:storage
+building.blocks.storage
+building.blocks.storage.repository
+building.blocks.storage.source.local.di
 module:test-common
 building.blocks.test.common.test
 module:ui-common
