@@ -1,6 +1,8 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 
+module:crypto
+building.blocks.crypto
 module:foundation
 building.blocks.foundation.helper
 building.blocks.foundation.model
