@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'android.artisan.ui.component'
+    namespace 'building.blocks.ui.component'
     compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
@@ -74,6 +74,8 @@ dependencies {
     debugApi libs.compose.ui.tooling.preview
     debugApi platform(libs.compose.bom)
     debugApi libs.compose.ui.tooling
+
+    api libs.foundation
 }
 
 publishing {
@@ -98,9 +100,9 @@ publishing {
 
     publications {
         allVariants(MavenPublication) {
-            groupId = "android.artisan"
+            groupId = "building.blocks"
             artifactId = "ui-component"
-            version = "2.0.0"
+            version = "1.0.0"
 
             afterEvaluate {
                 from components.default
