@@ -38,8 +38,7 @@ android {
 dependencies {
     api libs.foundation
 
-    compileOnly libs.crypto
-    runtimeOnly libs.crypto
+    implementation libs.crypto
 
     implementation libs.androidx.core
 }
