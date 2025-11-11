@@ -1,16 +1,37 @@
 name: Publish Storage to GitHub Packages
-on: workflow_dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'The type of version bump (major, minor, or patch)'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: 'patch'
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       packages: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up JDK 17
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version: '21'
@@ -19,6 +40,53 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
+      - name: Update Version
+        id: version_updater
+        run: |
+          # The path to the Gradle file containing the version
+          GRADLE_FILE="storage/build.gradle"
+
+          # Read the current version using a regex
+          current_version=$(grep -o "version = \"[0-9]*\.[0-9]*\.[0-9]*\"" $GRADLE_FILE | grep -o "[0-9]*\.[0-9]*\.[0-9]*")
+          echo "Current version: $current_version"
+
+          # Split version into parts
+          IFS='.' read -r -a version_parts <<< "$current_version"
+          major=${version_parts[0]}
+          minor=${version_parts[1]}
+          patch=${version_parts[2]}
+
+          # Increment the correct part based on user input
+          case "${{ github.event.inputs.version_type }}" in
+            major)
+              major=$((major + 1))
+              minor=0
+              patch=0
+              ;;
+            minor)
+              minor=$((minor + 1))
+              patch=0
+              ;;
+            patch)
+              patch=$((patch + 1))
+              ;;
+          esac
+
+          new_version="$major.$minor.$patch"
+          echo "New version: $new_version"
+
+          # Use sed to replace the version in the gradle file
+          sed -i "s/version = \"$current_version\"/version = \"$new_version\"/" $GRADLE_FILE
+
+          # Set the new version as an output for other steps
+          echo "new_version=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Commit and Push Version Bump
+        run: |
+          git add storage/build.gradle
+          git commit -m "chore(release): Bump version to ${{ steps.version_updater.outputs.new_version }}"
+          git push
 
       - name: Build with Gradle
         run: ./gradlew storage:build
@@ -47,8 +115,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/dokka/htmlMultiModule
