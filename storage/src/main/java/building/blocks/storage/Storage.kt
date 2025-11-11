@@ -30,6 +30,7 @@ public object Storage {
 
     @Volatile
     private var fileRepository: FileRepository? = null
+
     @Volatile
     private var encryptedFileRepository: FileRepository? = null
 
