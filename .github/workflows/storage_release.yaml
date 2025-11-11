@@ -19,6 +19,9 @@ jobs:
     permissions:
       contents: write
       packages: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -82,36 +85,58 @@ jobs:
           # Set the new version as an output for other steps
           echo "new_version=$new_version" >> $GITHUB_OUTPUT
 
-      - name: Commit and Push Version Bump
+      - name: Create and Push Branch
+        id: create_branch
         run: |
+          BRANCH_NAME="release/storage-v${{ steps.version_updater.outputs.new_version }}"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          git checkout -b $BRANCH_NAME
           git add storage/build.gradle
           git commit -m "chore(release): Bump version to ${{ steps.version_updater.outputs.new_version }}"
-          git push
+          git push origin $BRANCH_NAME
+
+      - name: Create Pull Request with GitHub CLI
+        id: cpr
+        run: |
+          PR_URL=$(gh pr create \
+            --title "chore(release): Bump storage version to ${{ steps.version_updater.outputs.new_version }}" \
+            --body "Automated version bump to ${{ steps.version_updater.outputs.new_version }}" \
+            --base main)
+          echo "pull-request-url=$PR_URL" >> $GITHUB_OUTPUT
+          PR_NUMBER=$(echo "$PR_URL" | awk -F'/' '{print $NF}')
+          echo "pull-request-number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Wait for PR checks, then merge
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Waiting for checks on PR #${PR_NUMBER} to complete..."
+          gh pr checks $PR_NUMBER --watch --required --timeout 15m
+          
+          echo "All checks passed. Merging PR #${PR_NUMBER}..."
+          gh pr merge $PR_NUMBER --squash --delete-branch
+          
+      - name: Checkout main branch to get merged changes
+        if: steps.cpr.outputs.pull-request-number # Only run if a PR was created
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Build with Gradle
         run: ./gradlew storage:build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Unit Tests
         run: ./gradlew storage:test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Detekt Checks
         run: ./gradlew storage:detektMain
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish package
         run: ./gradlew storage:publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Dokka Html files
         run: ./gradlew dokkaHtmlMultiModule
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
