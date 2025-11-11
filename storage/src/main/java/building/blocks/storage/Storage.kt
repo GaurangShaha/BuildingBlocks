@@ -28,6 +28,11 @@ public object Storage {
     private lateinit var mediaStorePublicFileStorageStrategy: MediaStorePublicFileStorageStrategy
     private lateinit var legacyPublicFileStorageStrategy: LegacyPublicFileStorageStrategy
 
+    @Volatile
+    private var fileRepository: FileRepository? = null
+    @Volatile
+    private var encryptedFileRepository: FileRepository? = null
+
     /**
      * Initializes the Storage module with the application context.
      *
@@ -55,9 +60,12 @@ public object Storage {
     }
 
     /**
-     * Returns a [FileRepository] for performing standard (unencrypted) file operations.
+     * Returns a singleton instance of [FileRepository] for performing standard (unencrypted) file operations.
      *
-     * @param ioDispatcher The [CoroutineDispatcher] to be used for I/O operations. Defaults to [Dispatchers.IO].
+     * The instance is created on the first call, and the same instance is returned on subsequent calls.
+     *
+     * @param ioDispatcher The [CoroutineDispatcher] to be used for I/O operations. This parameter is only
+     *                     used during the first call to create the instance. It defaults to [Dispatchers.IO].
      * @return An instance of [FileRepository].
      * @throws IllegalStateException if [initialize] has not been called.
      */
@@ -65,15 +73,22 @@ public object Storage {
         ioDispatcher: CoroutineDispatcher = Dispatchers.IO
     ): FileRepository {
         checkIsInitialised()
-        return DefaultFileRepository(createLocalFileSource(ioDispatcher))
+        return fileRepository ?: synchronized(this) {
+            fileRepository ?: DefaultFileRepository(createLocalFileSource(ioDispatcher)).also {
+                fileRepository = it
+            }
+        }
     }
 
     /**
-     * Returns a [FileRepository] that performs on-the-fly encryption and decryption for all file operations.
+     * Returns a singleton instance of [FileRepository] that performs on-the-fly encryption and decryption.
+     *
+     * The instance is created on the first call, and the same instance is returned on subsequent calls.
      *
      * @param allowPublicFileEncryption If `true`, allows encryption of files in public storage directories.
-     *                                  Defaults to `false` to prevent accidental encryption of shared files.
-     * @param ioDispatcher The [CoroutineDispatcher] to be used for I/O operations. Defaults to [Dispatchers.IO].
+     *                                  This parameter is only used during the first call. Defaults to `false`.
+     * @param ioDispatcher The [CoroutineDispatcher] to be used for I/O operations. This parameter is only
+     *                     used during the first call. Defaults to [Dispatchers.IO].
      * @return An instance of [FileRepository] with encryption capabilities.
      * @throws IllegalStateException if [initialize] has not been called.
      */
@@ -82,9 +97,11 @@ public object Storage {
         ioDispatcher: CoroutineDispatcher = Dispatchers.IO
     ): FileRepository {
         checkIsInitialised()
-        return DefaultFileRepository(
-            createEncryptedFileSource(ioDispatcher, allowPublicFileEncryption)
-        )
+        return encryptedFileRepository ?: synchronized(this) {
+            encryptedFileRepository ?: DefaultFileRepository(
+                createEncryptedFileSource(ioDispatcher, allowPublicFileEncryption)
+            ).also { encryptedFileRepository = it }
+        }
     }
 
     private fun createEncryptedFileSource(
@@ -107,8 +124,8 @@ public object Storage {
     private fun createLocalFileSource(ioDispatcher: CoroutineDispatcher): LocalFileSource =
         LocalFileSource(
             appSpecificFileStorageStrategy = appSpecificFileStorageStrategy,
-            mediaStorePublicStorageStrategy = mediaStorePublicFileStorageStrategy,
-            legacyPublicStorageStrategy = legacyPublicFileStorageStrategy,
+            mediaStorePublicFileStorageStrategy = mediaStorePublicFileStorageStrategy,
+            legacyPublicFileStorageStrategy = legacyPublicFileStorageStrategy,
             ioDispatcher = ioDispatcher
         )
 }

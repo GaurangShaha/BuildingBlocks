@@ -13,17 +13,17 @@ import java.io.InputStream
 
 internal class LocalFileSource(
     private val appSpecificFileStorageStrategy: FileStorageStrategy,
-    private val mediaStorePublicStorageStrategy: FileStorageStrategy,
-    private val legacyPublicStorageStrategy: FileStorageStrategy,
+    private val mediaStorePublicFileStorageStrategy: FileStorageStrategy,
+    private val legacyPublicFileStorageStrategy: FileStorageStrategy,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : FileSource {
 
     private fun getStrategy(location: StorageLocation): FileStorageStrategy {
         return if (location.isPublic()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                mediaStorePublicStorageStrategy
+                mediaStorePublicFileStorageStrategy
             } else {
-                legacyPublicStorageStrategy
+                legacyPublicFileStorageStrategy
             }
         } else {
             appSpecificFileStorageStrategy
