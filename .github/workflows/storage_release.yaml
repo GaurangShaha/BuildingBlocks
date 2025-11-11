@@ -112,7 +112,7 @@ jobs:
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Waiting for checks on PR #${PR_NUMBER} to complete..."
-          gh pr checks $PR_NUMBER --watch --required --timeout 15m
+          timeout 15m gh pr checks $PR_NUMBER --watch --required
           
           echo "All checks passed. Merging PR #${PR_NUMBER}..."
           gh pr merge $PR_NUMBER --squash --delete-branch
