@@ -99,7 +99,7 @@ jobs:
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Merging PR #${PR_NUMBER} with admin privileges..."
-          gh pr merge $PR_NUMBER --admin --squash
+          gh pr merge $PR_NUMBER --admin --squash --no-delete-branch
 
       - name: Checkout main branch to get merged changes
         uses: actions/checkout@v4
