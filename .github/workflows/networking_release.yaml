@@ -1,4 +1,4 @@
-name: Publish networking to GitHub Packages
+name: Publish Networking to GitHub Packages
 
 on:
   workflow_dispatch:
@@ -14,128 +14,10 @@ on:
         default: 'patch'
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
-      pull-requests: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Git
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "github-actions-bot@github.com"
-
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'jetbrains'
-          cache: gradle
-
-      - name: Update Version
-        id: version_updater
-        run: |
-          GRADLE_FILE="networking/build.gradle"
-          current_version=$(grep -o "version = \"[0-9]*\.[0-9]*\.[0-9]*\"" $GRADLE_FILE | grep -o "[0-9]*\.[0-9]*\.[0-9]*")
-          echo "Current version: $current_version"
-
-          IFS='.' read -r -a version_parts <<< "$current_version"
-          major=${version_parts[0]}
-          minor=${version_parts[1]}
-          patch=${version_parts[2]}
-
-          case "${{ github.event.inputs.version_type }}" in
-            major)
-              major=$((major + 1)); minor=0; patch=0 ;;
-            minor)
-              minor=$((minor + 1)); patch=0 ;;
-            patch)
-              patch=$((patch + 1)) ;;
-          esac
-
-          new_version="$major.$minor.$patch"
-          echo "New version: $new_version"
-
-          sed -i "s/version = \"$current_version\"/version = \"$new_version\"/" $GRADLE_FILE
-          echo "new_version=$new_version" >> $GITHUB_OUTPUT
-
-      - name: Create and Push Branch
-        id: create_branch
-        run: |
-          BRANCH_NAME="release/networking-v${{ steps.version_updater.outputs.new_version }}"
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
-          git checkout -b $BRANCH_NAME
-          git add networking/build.gradle
-          git commit -m "chore(release): Bump networking version to ${{ steps.version_updater.outputs.new_version }}"
-          git push origin $BRANCH_NAME
-
-      - name: Create Pull Request with GitHub CLI
-        id: cpr
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create \
-            --title "chore(release): Bump networking version to ${{ steps.version_updater.outputs.new_version }}" \
-            --body "Automated version bump to ${{ steps.version_updater.outputs.new_version }} for release." \
-            --base main \
-            --head ${{ steps.create_branch.outputs.branch_name }}
-          
-          sleep 5
-
-          PR_NUMBER=$(gh pr view ${{ steps.create_branch.outputs.branch_name }} --json number --jq '.number')
-          echo "pull-request-number=$PR_NUMBER" >> $GITHUB_OUTPUT
-
-      - name: Merge Pull Request (Bypass Branch Protection)
-        if: steps.cpr.outputs.pull-request-number
-        env:
-          GH_TOKEN: ${{ secrets.ADMIN_PAT }}
-          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
-        run: |
-          echo "Merging PR #${PR_NUMBER} with admin privileges..."
-          gh pr merge $PR_NUMBER --admin --squash
-
-      - name: Checkout main branch to get merged changes
-        uses: actions/checkout@v4
-        with:
-          ref: 'main'
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Build with Gradle
-        run: ./gradlew :networking:build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Run Unit Tests
-        run: ./gradlew :networking:test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Run Detekt Checks
-        run: ./gradlew :networking:detektMain
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish package
-        run: ./gradlew :networking:publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate Dokka Html files
-        run: ./gradlew dokkaHtmlMultiModule
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/dokka/htmlMultiModule
+  call-reusable-workflow:
+    uses: ./.github/workflows/reusable_release.yaml
+    with:
+      module_name: 'networking'
+      version_type: ${{ github.event.inputs.version_type }}
+    secrets:
+      ADMIN_PAT: ${{ secrets.ADMIN_PAT }}
