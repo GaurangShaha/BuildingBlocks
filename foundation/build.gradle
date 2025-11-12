@@ -44,7 +44,7 @@ publishing {
         release(MavenPublication) {
             groupId = "building.blocks"
             artifactId = "foundation"
-            version = "1.0.0"
+            version = "1.1.0"
 
             from(components.java)
         }
