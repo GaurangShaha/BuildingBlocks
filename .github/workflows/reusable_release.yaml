@@ -1,0 +1,128 @@
+name: Reusable Module Release
+
+on:
+  workflow_call:
+    inputs:
+      module_name:
+        description: 'The name of the module to publish'
+        required: true
+        type: string
+      version_type:
+        description: 'The type of version bump'
+        required: true
+        type: string
+    secrets:
+      ADMIN_PAT:
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "github-actions-bot@github.com"
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'jetbrains'
+          cache: gradle
+
+      - name: Update Version
+        id: version_updater
+        run: |
+          MODULE_NAME=${{ inputs.module_name }}
+          GRADLE_FILE="$MODULE_NAME/build.gradle"
+          current_version=$(grep -o "version = \"[0-9]*\.[0-9]*\.[0-9]*\"" $GRADLE_FILE | grep -o "[0-9]*\.[0-9]*\.[0-9]*")
+          echo "Current version: $current_version"
+
+          IFS='.' read -r -a version_parts <<< "$current_version"
+          major=${version_parts[0]}
+          minor=${version_parts[1]}
+          patch=${version_parts[2]}
+
+          case "${{ inputs.version_type }}" in
+            major) major=$((major + 1)); minor=0; patch=0 ;;
+            minor) minor=$((minor + 1)); patch=0 ;;
+            patch) patch=$((patch + 1)) ;;
+          esac
+
+          new_version="$major.$minor.$patch"
+          echo "New version: $new_version"
+
+          sed -i "s/version = \"$current_version\"/version = \"$new_version\"/" $GRADLE_FILE
+          echo "new_version=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Create and Push Branch
+        id: create_branch
+        run: |
+          BRANCH_NAME="release/${{ inputs.module_name }}-v${{ steps.version_updater.outputs.new_version }}"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          git checkout -b $BRANCH_NAME
+          git add "${{ inputs.module_name }}/build.gradle"
+          git commit -m "chore(release): Bump ${{ inputs.module_name }} version to ${{ steps.version_updater.outputs.new_version }}"
+          COMMIT_SHA=$(git rev-parse HEAD)
+          echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
+          git push origin $BRANCH_NAME
+
+      - name: Create Pull Request with GitHub CLI
+        id: cpr
+        run: |
+          gh pr create \
+            --title "chore(release): Bump ${{ inputs.module_name }} version to ${{ steps.version_updater.outputs.new_version }}" \
+            --body "Automated version bump to ${{ steps.version_updater.outputs.new_version }} for release." \
+            --base main \
+            --head ${{ steps.create_branch.outputs.branch_name }}
+          
+          sleep 5
+
+          PR_NUMBER=$(gh pr view ${{ steps.create_branch.outputs.branch_name }} --json number --jq '.number')
+          echo "pull-request-number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Merge Pull Request (Bypass Branch Protection)
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.ADMIN_PAT }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Merging PR #${PR_NUMBER} with admin privileges..."
+          gh pr merge $PR_NUMBER --admin --squash
+
+      - name: Checkout main branch to get merged changes
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build, Test, and Publish
+        run: |
+          ./gradlew :${{ inputs.module_name }}:build
+          ./gradlew :${{ inputs.module_name }}:test
+          ./gradlew :${{ inputs.module_name }}:detektMain
+          ./gradlew :${{ inputs.module_name }}:publish
+
+      - name: Generate Dokka Html files
+        run: ./gradlew dokkaHtmlMultiModule
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/dokka/htmlMultiModule
