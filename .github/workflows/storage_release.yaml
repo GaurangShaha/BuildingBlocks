@@ -39,9 +39,6 @@ jobs:
           distribution: 'jetbrains'
           cache: gradle
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       - name: Update Version
         id: version_updater
         run: |
@@ -106,23 +103,26 @@ jobs:
         with:
           ref: 'main'
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       - name: Build with Gradle
-        run: ./gradlew storage:build
+        run: ./gradlew :storage:build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Unit Tests
-        run: ./gradlew storage:test
+        run: ./gradlew :storage:test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Detekt Checks
-        run: ./gradlew storage:detektMain
+        run: ./gradlew :storage:detektMain
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish package
-        run: ./gradlew storage:publish
+        run: ./gradlew :storage:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
