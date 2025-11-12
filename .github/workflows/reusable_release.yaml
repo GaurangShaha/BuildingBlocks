@@ -95,7 +95,6 @@ jobs:
           echo "pull-request-number=$PR_NUMBER" >> $GITHUB_OUTPUT
 
       - name: Merge Pull Request (Bypass Branch Protection)
-        id: merge_pr
         if: steps.cpr.outputs.pull-request-number
         env:
           GH_TOKEN: ${{ secrets.ADMIN_PAT }}
@@ -103,12 +102,6 @@ jobs:
         run: |
           echo "Merging PR #${PR_NUMBER} with admin privileges..."
           gh pr merge $PR_NUMBER --admin --squash
-
-      - name: Restore Release Branch
-        if: steps.merge_pr.conclusion == 'success'
-        run: |
-          echo "Restoring branch ${{ steps.create_branch.outputs.branch_name }} from commit SHA ${{ steps.create_branch.outputs.commit_sha }}"
-          git push origin ${{ steps.create_branch.outputs.commit_sha }}:refs/heads/${{ steps.create_branch.outputs.branch_name }}
 
       - name: Checkout main branch to get merged changes
         uses: actions/checkout@v4
@@ -124,6 +117,12 @@ jobs:
           ./gradlew :${{ inputs.module_name }}:test
           ./gradlew :${{ inputs.module_name }}:detektMain
           ./gradlew :${{ inputs.module_name }}:publish
+
+      - name: Restore Release Branch
+        if: steps.cpr.outputs.pull-request-number
+        run: |
+          echo "Restoring branch ${{ steps.create_branch.outputs.branch_name }} from commit SHA ${{ steps.create_branch.outputs.commit_sha }}"
+          git push origin ${{ steps.create_branch.outputs.commit_sha }}:refs/heads/${{ steps.create_branch.outputs.branch_name }}
 
       - name: Generate Dokka Html files
         run: ./gradlew dokkaHtmlMultiModule
