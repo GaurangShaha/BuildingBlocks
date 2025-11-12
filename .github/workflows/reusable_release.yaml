@@ -76,6 +76,8 @@ jobs:
           git checkout -b $BRANCH_NAME
           git add "${{ inputs.module_name }}/build.gradle"
           git commit -m "chore(release): Bump ${{ inputs.module_name }} version to ${{ steps.version_updater.outputs.new_version }}"
+          COMMIT_SHA=$(git rev-parse HEAD)
+          echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
           git push origin $BRANCH_NAME
 
       - name: Create Pull Request with GitHub CLI
@@ -99,7 +101,13 @@ jobs:
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Merging PR #${PR_NUMBER} with admin privileges..."
-          gh pr merge $PR_NUMBER --admin --squash --no-delete-branch
+          gh pr merge $PR_NUMBER --admin --squash
+
+      - name: Restore Release Branch
+        if: steps.cpr.outputs.pull-request-number
+        run: |
+          echo "Restoring branch ${{ steps.create_branch.outputs.branch_name }} from commit SHA ${{ steps.create_branch.outputs.commit_sha }}"
+          git push origin ${{ steps.create_branch.outputs.commit_sha }}:refs/heads/${{ steps.create_branch.outputs.branch_name }}
 
       - name: Checkout main branch to get merged changes
         uses: actions/checkout@v4
