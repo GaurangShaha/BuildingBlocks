@@ -15,6 +15,10 @@ on:
 
 jobs:
   call-reusable-workflow:
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
     uses: ./.github/workflows/reusable_release.yaml
     with:
       module_name: 'crypto'
