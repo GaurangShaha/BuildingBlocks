@@ -43,6 +43,15 @@ jobs:
           distribution: 'jetbrains'
           cache: gradle
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run Unit Tests
+        run: ./gradlew :${{ inputs.module_name }}:test
+
+      - name: Run Detekt Checks
+        run: ./gradlew :${{ inputs.module_name }}:detektMain
+
       - name: Update Version
         id: version_updater
         run: |
@@ -108,14 +117,12 @@ jobs:
         with:
           ref: 'main'
 
-      - name: Grant execute permission for gradlew
+      - name: Grant execute permission for gradlew again
         run: chmod +x gradlew
 
-      - name: Build, Test, and Publish
+      - name: Build and Publish
         run: |
           ./gradlew :${{ inputs.module_name }}:build
-          ./gradlew :${{ inputs.module_name }}:test
-          ./gradlew :${{ inputs.module_name }}:detektMain
           ./gradlew :${{ inputs.module_name }}:publish
 
       - name: Generate Dokka Html files
