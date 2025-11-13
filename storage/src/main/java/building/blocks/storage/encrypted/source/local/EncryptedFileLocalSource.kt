@@ -22,8 +22,8 @@ internal class EncryptedFileLocalSource(
         location: StorageLocation,
         inputStream: InputStream
     ): Result<Uri> {
-        return executeSafely {
-            withContext(ioDispatcher) {
+        return withContext(ioDispatcher) {
+            executeSafely {
                 checkPublicFileEncryptionAllowed(location)
 
                 cryptoManager.encrypt(inputStream).use { encryptedStream ->
@@ -37,8 +37,8 @@ internal class EncryptedFileLocalSource(
         fileName: String,
         location: StorageLocation
     ): Result<InputStream> {
-        return executeSafely {
-            withContext(ioDispatcher) {
+        return withContext(ioDispatcher) {
+            executeSafely {
                 checkPublicFileEncryptionAllowed(location)
 
                 localFileSource.read(fileName, location).map { encryptedInputStream ->
@@ -49,10 +49,12 @@ internal class EncryptedFileLocalSource(
     }
 
     override suspend fun delete(fileName: String, location: StorageLocation): Result<Unit> {
-        return executeSafely {
-            checkPublicFileEncryptionAllowed(location)
+        return withContext(ioDispatcher) {
+            executeSafely {
+                checkPublicFileEncryptionAllowed(location)
 
-            localFileSource.delete(fileName, location).getOrThrow()
+                localFileSource.delete(fileName, location).getOrThrow()
+            }
         }
     }
 
@@ -61,8 +63,8 @@ internal class EncryptedFileLocalSource(
         location: StorageLocation,
         text: String
     ): Result<Uri> {
-        return executeSafely {
-            withContext(ioDispatcher) {
+        return withContext(ioDispatcher) {
+            executeSafely {
                 checkPublicFileEncryptionAllowed(location)
 
                 val existingContent = read(fileName, location).fold(
