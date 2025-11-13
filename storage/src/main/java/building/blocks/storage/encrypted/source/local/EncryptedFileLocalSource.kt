@@ -27,8 +27,8 @@ internal class EncryptedFileLocalSource(
                 checkPublicFileEncryptionAllowed(location)
 
                 cryptoManager.encrypt(inputStream).use { encryptedStream ->
-                    localFileSource.save(fileName, location, encryptedStream)
-                }.getOrThrow()
+                    localFileSource.save(fileName, location, encryptedStream).getOrThrow()
+                }
             }
         }
     }
@@ -41,9 +41,8 @@ internal class EncryptedFileLocalSource(
             executeSafely {
                 checkPublicFileEncryptionAllowed(location)
 
-                localFileSource.read(fileName, location).map { encryptedInputStream ->
-                    cryptoManager.decrypt(encryptedInputStream)
-                }.getOrThrow()
+                val encryptedInputStream = localFileSource.read(fileName, location).getOrThrow()
+                cryptoManager.decrypt(encryptedInputStream)
             }
         }
     }
