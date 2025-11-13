@@ -2,7 +2,6 @@ package building.blocks.storage.source.local
 
 import android.net.Uri
 import android.os.Build
-import android.webkit.MimeTypeMap
 import building.blocks.foundation.helper.executeSafely
 import building.blocks.storage.StorageLocation
 import building.blocks.storage.source.local.storage.statergy.FileStorageStrategy
@@ -62,13 +61,14 @@ internal class LocalFileSource(
         text: String
     ): Result<Uri> = withContext(ioDispatcher) {
         executeSafely {
-            val mimeType = MimeTypeMap.getSingleton()
-                .getMimeTypeFromExtension(fileName.substringAfterLast('.', ""))
-            if (mimeType != "text/plain") {
+            if (fileName.substringAfterLast('.', "") in plainTextExtensions) {
+                getStrategy(location).appendTextToFile(location, fileName, text)
+            } else {
                 error("File is not a plain text file")
             }
-
-            getStrategy(location).appendTextToFile(location, fileName, text)
         }
     }
+
+    private val plainTextExtensions =
+        listOf("txt", "text", "log", "conf", "cfg", "ini", "md", "csv")
 }

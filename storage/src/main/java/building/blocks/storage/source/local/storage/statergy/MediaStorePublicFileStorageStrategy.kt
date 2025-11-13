@@ -6,7 +6,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
-import android.webkit.MimeTypeMap
 import building.blocks.storage.StorageLocation
 import building.blocks.storage.StorageLocation.PublicAlarms
 import building.blocks.storage.StorageLocation.PublicAudiobooks
@@ -32,7 +31,6 @@ internal class MediaStorePublicFileStorageStrategy(private val context: Context)
         val resolver = context.contentResolver
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
-            put(MediaStore.MediaColumns.MIME_TYPE, fileName.getMimeTypeForLocation())
             put(MediaStore.MediaColumns.RELATIVE_PATH, getRelativePath(location))
         }
         val contentUri = getMediaStoreContentUri(location)
@@ -96,11 +94,6 @@ internal class MediaStorePublicFileStorageStrategy(private val context: Context)
             append("/")
             append(location.subDirectory.trim('/'))
         }
-    }
-
-    private fun String.getMimeTypeForLocation(): String {
-        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(this.substringAfterLast('.', ""))
-            ?: "application/octet-stream"
     }
 
     @SuppressLint("NewApi")
