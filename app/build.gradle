@@ -2,11 +2,12 @@ plugins {
     alias libs.plugins.android.application
     alias libs.plugins.kotlin.android
     alias libs.plugins.ksp
+    alias libs.plugins.compose.compiler
 }
 
 android {
     namespace 'building.blocks.sample'
-    compileSdk libs.versions.compileSdk.get().toInteger()
+    compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
         applicationId "building.blocks.sample"
@@ -32,11 +33,8 @@ android {
         sourceCompatibility JavaVersion.valueOf(libs.versions.sourceCompatibility.get())
         targetCompatibility JavaVersion.valueOf(libs.versions.targetCompatibility.get())
     }
-    kotlinOptions {
-        jvmTarget = libs.versions.jvmTarget.get()
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion libs.versions.kotlinCompilerExtensionVersion.get()
+    kotlin {
+        jvmToolchain(libs.versions.jvmTarget.get().toInteger())
     }
     packagingOptions {
         resources {

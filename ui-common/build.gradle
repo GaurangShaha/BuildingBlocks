@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'building.blocks.ui.common'
-    compileSdk libs.versions.compileSdk.get().toInteger()
+    compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
         minSdk libs.versions.minSdk.get().toInteger()
@@ -26,8 +26,8 @@ android {
         sourceCompatibility JavaVersion.valueOf(libs.versions.sourceCompatibility.get())
         targetCompatibility JavaVersion.valueOf(libs.versions.targetCompatibility.get())
     }
-    kotlinOptions {
-        jvmTarget = libs.versions.jvmTarget.get()
+    kotlin {
+        jvmToolchain(libs.versions.jvmTarget.get().toInteger())
     }
     packagingOptions {
         resources {

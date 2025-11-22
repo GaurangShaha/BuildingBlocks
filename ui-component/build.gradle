@@ -2,12 +2,13 @@ plugins {
     alias libs.plugins.android.library
     alias libs.plugins.kotlin.android
     alias libs.plugins.kotlin.serialization
+    alias libs.plugins.compose.compiler
     id 'maven-publish'
 }
 
 android {
     namespace 'building.blocks.ui.component'
-    compileSdk libs.versions.compileSdk.get().toInteger()
+    compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
         minSdk libs.versions.minSdk.get().toInteger()
@@ -26,14 +27,11 @@ android {
         sourceCompatibility JavaVersion.valueOf(libs.versions.sourceCompatibility.get())
         targetCompatibility JavaVersion.valueOf(libs.versions.targetCompatibility.get())
     }
-    kotlinOptions {
-        jvmTarget = libs.versions.jvmTarget.get()
+    kotlin {
+        jvmToolchain(libs.versions.jvmTarget.get().toInteger())
     }
     buildFeatures {
         compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion libs.versions.kotlinCompilerExtensionVersion.get()
     }
     packagingOptions {
         resources {
