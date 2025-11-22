@@ -1,7 +1,7 @@
 package building.blocks.foundation.helper
 
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
-import kotlin.coroutines.coroutineContext
 
 /**
  * Executes the given [operation] safely within a coroutine, handling any exceptions that may occur.
@@ -18,11 +18,11 @@ import kotlin.coroutines.coroutineContext
  */
 
 @Suppress("TooGenericExceptionCaught")
-public suspend inline fun <T> executeSafely(finalAction: () -> Unit = {}, operation: () -> T): Result<T> =
+public suspend inline fun <T> suspendingRunCatching(finalAction: () -> Unit = {}, operation: () -> T): Result<T> =
     try {
         Result.success(operation())
     } catch (exception: Exception) {
-        coroutineContext.ensureActive()
+        currentCoroutineContext().ensureActive()
         Result.failure(exception)
     } finally {
         finalAction()
